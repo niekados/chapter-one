@@ -1,8 +1,8 @@
-# chapterOne
+# Chapter One
 
 <img src="" alt="Am I Responsive" style="width:90%;">
 
-"ChapterOne" is an online bookstore designed to support emerging authors by providing them with a platform to share their work. Focused on selling affordable, digital PDF books, Chapter One aims to connect readers with fresh voices in literature, offering them a unique way to support new authors at the start of their writing journey. With a minimalist design, integrated Stripe payments, and Mailchimp newsletters, Chapter One fosters an accessible environment for both authors and readers passionate about discovering new stories.
+"Chapter One" is an online bookstore designed to support emerging authors by providing them with a platform to share their work. Focused on selling affordable, digital PDF books, Chapter One aims to connect readers with fresh voices in literature, offering them a unique way to support new authors at the start of their writing journey. With a minimalist design, integrated Stripe payments, and Mailchimp newsletters, Chapter One fosters an accessible environment for both authors and readers passionate about discovering new stories.
 
 **[Link to the deployed application]()**
 
@@ -45,7 +45,7 @@
 
 ## Project Inception
 
-Chapter One was created with a vision to support and uplift undiscovered writers. The traditional publishing world often presents barriers for new authors, making it difficult to reach an audience or gain financial backing. Chapter One is here to change that, offering a minimalist, digital platform where emerging writers can share their works and readers can support them directly.
+Chapter One was created with a vision to support and uplift undiscovered writers. The traditional publishing world often presents barriers for new authors, making it difficult to reach an audience or gain financial backing. Chapter One is here to change that, offering a minimalist digital platform where emerging writers can share their works, and readers can support them directly by purchasing their books.
 
 The platform is simple yet impactful, designed to encourage new talent and foster a community of readers who value fresh perspectives. Readers can explore short stories and digital books in various genres, knowing that each purchase directly supports a writer at the beginning of their creative journey.
 
@@ -77,5 +77,33 @@ The mission of **Chapter One** is to bridge the gap between emerging authors and
 
 - **Build Brand Recognition**: Grow **Chapter One**'s reputation as the go-to place for discovering undiscovered writers, leveraging social media, Mailchimp newsletters, and community outreach to attract both authors and readers.
 
-Through these business goals, **Chapter One** aspires to create a sustainable platform that balances profitability with its core mission of supporting emerging literary talent.
+## Strategy
+
+The strategy for **Chapter One** focuses on creating a welcoming platform where emerging authors can reach readers who are interested in discovering fresh literary talents. Key strategic points are centered on platform simplicity, user engagement, and long-term growth.
+
+### Strategic Objectives
+
+- **Simplicity and Accessibility**: Offer a minimalist design and easy navigation, making it intuitive for readers and authors to use. This includes straightforward features, a clear purchase flow, and minimal clicks to buy and access books.
+
+- **Support New Authors**: Keep publishing costs low to attract new writers who may not have access to traditional publishing channels, fostering a community of emerging talent. 
+
+- **Engage and Retain Readers**: Encourage user retention through a library feature for purchased books and regular updates about new releases through a Mailchimp-powered newsletter.
+
+- **Revenue Growth with Digital-Only Sales**: Utilize Stripe integration to facilitate quick, secure purchases of digital content, keeping costs low while focusing on selling PDF books only.
+
+- **Community Building and Marketing**: Use social media platforms, particularly Facebook, to connect with a broader audience, share author stories, and increase awareness of the platform as a place for discovering unique stories.
+
+## Scope
+
+The scope of **Chapter One** is to deliver a simple, functional platform for both readers and emerging authors. It focuses on core features to provide a positive user experience while staying aligned with the platform's mission.
+
+- **Home Page**: Welcoming layout with a famous author quote used in place of a hero image, adding a literary atmosphere. Brief project description and a contact form for authors interested in publishing.
+- **Books Page**: Catalog of available books with CSS-styled covers, searchable by title or genre.
+- **Shopping Bag**: Feature allowing readers to add books to their cart and proceed to checkout.
+- **My Library**: Personalized page where users can access and download previously purchased books.
+- **Profile Page**: User account area with personal details and billing information.
+- **Admin Page**: Access for site owners to add and manage book listings.
+- **Secure Payments**: Integrated with Stripe for secure digital purchases.
+- **Newsletter Subscription**: Mailchimp integration to keep readers updated on new books and authors.
+- **Social Media Integration**: Facebook page and other social links to advertise new releases and engage readers.
 
