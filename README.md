@@ -122,3 +122,37 @@ The *Chapter One* project aims to create a simple online bookstore specialising 
   - The website will be responsive across mobile, tablet, desktop, and wide monitor sizes.
   - A basic privacy policy.
 
+## Structure
+
+The structure of **Chapter One** is carefully organised to ensure a smooth and intuitive user experience, guiding readers through the website’s core functions.
+
+### Website Structure
+
+1. **Home Page**: 
+   - Welcomes users with a literary quote and project overview, providing immediate clarity on the site’s purpose. 
+   - Authors can easily locate the contact form for publishing inquiries, while readers are directed to explore available books through the call-to-action button.
+
+2. **Books Page**:
+   - Displays a list of books styled as CSS book covers for a visually engaging experience.
+   - Includes a search bar enabling users to quickly find books of interest. This page is a focal point where users initiate their discovery journey.
+
+3. **Product Details Page**:
+   - Provides detailed information on each book, allowing users to make informed decisions. This page includes a purchase button, serving as the gateway to the checkout process.
+
+4. **Shopping Bag**:
+   - Allows users to review selected books and adjust their shopping choices before proceeding. The streamlined checkout process with Stripe integration ensures a secure transaction experience.
+
+5. **My Library**:
+   - A dedicated page where users can access purchased books for download, offering a personalized and easily navigable library experience.
+
+6. **Profile Page**:
+   - Enables users to manage personal information and view billing details. Integrated with Django Allauth, it ensures secure and easy account management.
+
+7. **Admin Page**:
+   - Accessible only to administrators, this page allows the site owner to add, edit, and delete books.
+
+### Navigation
+
+The navigation bar provides easy access to essential pages:
+- **Home**, **Books**, **Shopping Bag**, **My Library**, and **Profile**.
+- The footer includes links to social media channels and the privacy policy.
