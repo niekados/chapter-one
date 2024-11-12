@@ -95,15 +95,30 @@ The strategy for **Chapter One** focuses on creating a welcoming platform where 
 
 ## Scope
 
-The scope of **Chapter One** is to deliver a simple, functional platform for both readers and emerging authors. It focuses on core features to provide a positive user experience while staying aligned with the platform's mission.
+The *Chapter One* project aims to create a simple online bookstore specialising in digital books by new authors. The website focuses on core features essential for smooth user experience and book purchasing, keeping the website accessible and minimal.
 
-- **Home Page**: Welcoming layout with a famous author quote used in place of a hero image, adding a literary atmosphere. Brief project description and a contact form for authors interested in publishing.
-- **Books Page**: Catalog of available books with CSS-styled covers, searchable by title or genre.
-- **Shopping Bag**: Feature allowing readers to add books to their cart and proceed to checkout.
-- **My Library**: Personalized page where users can access and download previously purchased books.
-- **Profile Page**: User account area with personal details and billing information.
-- **Admin Page**: Access for site owners to add and manage book listings.
-- **Secure Payments**: Integrated with Stripe for secure digital purchases.
-- **Newsletter Subscription**: Mailchimp integration to keep readers updated on new books and authors.
-- **Social Media Integration**: Facebook page and other social links to advertise new releases and engage readers.
+- **Book Browsing and Search**:
+  - Users can explore a catalog of books, listed with author names, book titles, and genres.
+  - A simple search bar to look up books.
+  - Genre-based filtering for quick access to books by categories, such as comedy, short stories, and poetry.
+
+- **Product Details and Purchase Flow**:
+  - Each book has a product detail page displaying the author's name, book title, genre, a short description, and a purchase button.
+  - Upon purchasing, users receive a success message, are redirected to the My Library page, and receive an email confirmation.
+  - Purchased books are stored in the user's My Library, where they can download the books anytime.
+
+- **Profile and My Library**:
+  - A personalized user profile to manage personal details and billing information.
+  - My Library enables users to access all purchased books for download in PDF format.
+
+- **Contact for Authors**:
+  - A simple contact form or email link on the homepage for authors to inquire about publishing options.
+
+- **Payment and Newsletter Integration**:
+  - Stripe integration for secure and straightforward payments for digital book purchases.
+  - Mailchimp integration to send out regular updates about new releases, supporting reader engagement and retention.
+
+- **Mobile Responsiveness and Standard Privacy**:
+  - The website will be responsive across mobile, tablet, desktop, and wide monitor sizes.
+  - A basic privacy policy.
 
