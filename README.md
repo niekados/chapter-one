@@ -189,3 +189,30 @@ The navigation bar provides easy access to essential pages:
 
 <img src="documentation/wireframes/sign-in.png" alt="Sign In Page" style="width:60%;">
 
+## Surface
+
+The **Chapter One** project combines visual design to create a digital space that feels like an extension of a classic printed book. Blending old book aesthetics with a modern touch, the surface layer provides a warm, inviting environment for readers.
+
+### Fonts
+
+To enhance the literary feel, three fonts were selected:
+- **Space Mono**: Used for headers, navigation links, and buttons, this monospaced font offers a structured, modern twist reminiscent of a typewriter style, adding a touch of literature-inspired design.
+- **Cormorant Garamond**: The main body font, Cormorant Garamond, evokes the look of classic printed books. Its elegant serif style enhances readability, making it ideal for long-form text.
+- **Cinzel Decorative**: Used for decorative text, like the logo, adding a touch of elegance and uniqueness.
+
+### Colors
+
+<img src="documentation/wireframes/colours.png" alt="Colours" style="width:50%;">
+
+To capture the nostalgic ambience of an aged book, I took inspiration from a real, well-worn volume. By photographing the book pages and extracting colours with a colour picker, I recreated the subtle tones of the old book:
+
+- **Smoky Black (#171310)**: Smoky Black is the main text colour, combining readability and warmth. It echoes the look of printed ink on old book page.
+- **Dun (#DED0B7)**: The background colour, Dun, is reminiscent of well-loved, yellowed paper. This gentle tone provides a comfortable reading experience.
+- **White (#FFFFFF)**: Used in the navbar, buttons, and other key elements, white provides a modern touch. It stands out against the Dun background and adds a clean contrast that draws attention without overpowering the classic tones.
+
+### Accessibility and Visual Harmony
+
+To enhance readability, colour contrasts meet accessibility standards:
+- **Smoky Black on Dun**: With a contrast ratio of 12.15, this combination ensures easy reading against the background.
+- **Smoky Black on White**: A ratio of 18.47, making it ideal for navbar and interactive elements.
+
