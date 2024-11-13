@@ -8,10 +8,10 @@
 
 ## Index
 
-- [Project Inception](#project-inception)
-- [Customer Goals](#customer-goals)
+- [Project Inception](#project-inception) 
+- [Customer Goals](#customer-goals) 
 - [Business Goals](#business-goals)
-- [User Stories](#user-stories)
+X - [User Stories](#user-stories)
 - [Strategy](#strategy)
 - [Scope](#scope)
 - [Structure](#structure)
@@ -156,3 +156,36 @@ The structure of **Chapter One** is carefully organised to ensure a smooth and i
 The navigation bar provides easy access to essential pages:
 - **Home**, **Books**, **Shopping Bag**, **My Library**, and **Profile**.
 - The footer includes links to social media channels and the privacy policy.
+
+## Skeleton
+
+### Wireframes
+
+- **Home page**
+
+<img src="documentation/wireframes/home.png" alt="Home Page" style="width:60%;">
+
+- **Books Page**
+
+<img src="documentation/wireframes/books.png" alt="Books Page" style="width:60%;">
+
+- **My Library Page**
+
+<img src="documentation/wireframes/my-library.png" alt="My Library Page" style="width:60%;">
+
+- **Product Detail Page**
+
+<img src="documentation/wireframes/product-detail.png" alt="Product Detail Page" style="width:60%;">
+
+- **Profile Page**
+
+<img src="documentation/wireframes/profile.png" alt="Profile Page" style="width:60%;">
+
+- **Shopping Bag Page**
+
+<img src="documentation/wireframes/shopping-bag.png" alt="Shopping Bag Page" style="width:60%;">
+
+- **Sign In Page**
+
+<img src="documentation/wireframes/sign-in.png" alt="Sign In Page" style="width:60%;">
+
