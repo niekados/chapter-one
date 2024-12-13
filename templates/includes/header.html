@@ -1,0 +1,61 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid text-center">
+        <!-- Navbar Brand -->
+        <a class="navbar-brand" href="{% url 'home' %}">Chapter One</a>
+
+        <!-- Toggler button for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Books</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Library</a>
+                </li>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="dynamic"
+                        aria-expanded="false">
+                        Account
+                    </a>
+                    <!-- Collapsable Navbar Links -->
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                            <li><a class="dropdown-item" href="#">Manage Books</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Authors</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="#">My Account</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                        {% endif %}
+                        
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Search form -->
+<form class="d-flex justify-content-center mt-3" role="search">
+    <input class="form-control w-50 me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
