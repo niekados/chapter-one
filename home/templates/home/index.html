@@ -1,6 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+Home
+{% endblock %}
+
 {% block content %}
-<h1> </h1>
+<h1>Welcome to Chapter<span class="decorative">O</span>ne</h1>
+
+<!-- Literary Quote -->
+<div class="quote">
+    <p>“{{ content.quote }}”</p>
+    <p><small>— {{ content.quote_author }}</small></p>
+</div>
+
+<!-- About Us -->
+<h2>About Us</h2>
+<p>{{ content.about|safe }}</p>
+
+<!-- Get Published Form -->
+ <section class="w-50 text-center">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</section>
+
 {% endblock %}
