@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Variables for Fonts and Colors */
+:root {
+
+    /* Fonts */
+    /* Headers, Navigation links, and Buttons */
+    --links-font: "Space Mono", serif;
+    /* Decorative Text */
+    --deco-font: "Cinzel Decorative", serif;
+    /* Main Body */
+    --body-font: "Cormorant Garamond", serif;
+
+    /* Colors */
+    --dun: #DED0B7;
+    --smoky-black: #171310;
+    --white: #ffffff
+}
+
+* {
+    box-sizing: border-box; 
+}
+
+html, body {
+    height: 100%; 
+}
+
+main {
+    background-color: var(--dun);
+    font-family: var(--body-font);
+}
+
+/* Header */
+
+header li a.nav-link {
+    font-family: var(--links-font);
+    color: var(--smoky-black);
+}
+
+header form {
+    font-family: var(--links-font);
+}
+
+span.decorative {
+    font-family: var(--deco-font);
+    font-weight: 400;
+    font-size: 1.4rem;
+}
