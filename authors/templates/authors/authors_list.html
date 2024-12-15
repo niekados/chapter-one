@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+Authors
+{% endblock %}
+
+{% block content %}
+<h1>Meet Our Authors</h1>
+<div class="authors-list">
+    {% for author in authors %}
+    <div class="author-card">
+        <img src="{{ author.display_photo }}" alt="{{ author.name }}" class="author-photo">
+        <h2>{{ author.name }}</h2>
+        <p>
+            Born on {{ author.birth_date|date:"j F, Y" }} 
+            in {{ author.get_birth_country_display }}. {{ author.biography|safe }}
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -59,3 +59,10 @@ span.decorative {
     font-family: var(--deco-font);
     font-size: 110%;
 }
+
+/* Authors */
+
+.author-photo {
+    width: 20vw;
+    border-radius: 50%;
+}
