@@ -33,6 +33,12 @@ main {
 
 /* Header */
 
+header {
+    background-color: var(--white);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--smoky-black);
+}
+
 header li a.nav-link {
     font-family: var(--links-font);
     color: var(--smoky-black);

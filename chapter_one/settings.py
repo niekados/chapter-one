@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'djrichtextfield',
+    'django_countries',
     'home',
+    'authors',
 ]
 
 SITE_ID = 1

@@ -216,3 +216,12 @@ To enhance readability, colour contrasts meet accessibility standards:
 - **Smoky Black on Dun**: With a contrast ratio of 12.15, this combination ensures easy reading against the background.
 - **Smoky Black on White**: A ratio of 18.47, making it ideal for navbar and interactive elements.
 
+## Credits
+
+### **Images**
+- **Author Placeholder Image**:  
+  The placeholder image for authors without a profile photo was sourced from the [Avatar Placeholder website](https://avatar-placeholder.iran.liara.run/). This image is provided for free use.
+
+- **Author Avatars**:  
+  Author avatar images used throughout the project were downloaded as a free package from [Untitled UI Avatars](https://www.untitledui.com/avatars). These images are licensed for free commercial use.
+
