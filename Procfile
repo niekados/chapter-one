@@ -1,0 +1,1 @@
+web: gunicorn chapter_one.wsgi:application
