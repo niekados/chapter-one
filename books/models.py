@@ -1,4 +1,5 @@
 from django.db import models
+from uuid import uuid4
 from django.utils.text import slugify
 from authors.models import Author
 
@@ -44,11 +45,25 @@ class Book(models.Model):
         - genre (ForeignKey): Links the book to a genre.
         - description (TextField): A brief description of the book.
         - price (DecimalField): The price of the book.
-        - file (FileField): The uploaded book file (stored in AWS S3).
+        - file (FileField): The uploaded book file.
         - created_on (DateTimeField): The date the book was added.
     """
+
+    def upload_to(instance, filename):
+        """
+        Slugify the title and add to slug field.
+        Append a UUID to ensure unique file name.
+        """
+        slug = slugify(instance.title)
+        instance.slug = slug
+        ext = filename.split('.')[-1]
+        filename = f"{slug}-{uuid4()}.{ext}"
+        return f'books/{filename}'
+
     title = models.CharField(max_length=255, null=False, blank=False)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    slug = models.SlugField(
+        max_length=255, blank=True, editable=False
+    )
     author = models.ForeignKey(
         Author, on_delete=models.PROTECT, null=False, blank=False
     )
@@ -59,16 +74,8 @@ class Book(models.Model):
     price = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False
     )
-    file = models.FileField(upload_to='books/', null=False, blank=False)
+    file = models.FileField(upload_to=upload_to, null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
-
-    def save(self, *args, **kwargs):
-        """
-        Generate slug from title if not entered.
-        """
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

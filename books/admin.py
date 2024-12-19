@@ -15,9 +15,10 @@ class GenreAdmin(admin.ModelAdmin):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     """
-    Admin interface for the Book model.
+    Admin interface for Book model.
     """
     list_display = ['title', 'author', 'genre', 'price', 'created_on']
+    readonly_fields = ['slug']
     search_fields = [
         'title', 'author__name', 'genre__friendly_name', 'description'
     ]
