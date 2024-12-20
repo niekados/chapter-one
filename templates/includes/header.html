@@ -58,7 +58,7 @@
 </nav>
 
 <!-- Search form -->
-<form class="d-flex justify-content-center mt-3" role="search">
+<form class="d-flex justify-content-center mt-3" role="search" method="GET" action="{% url 'books_list' %}">
     <input class="form-control w-50 me-2" type="search" name="q" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>

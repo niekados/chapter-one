@@ -17,7 +17,7 @@ class BookAdmin(admin.ModelAdmin):
     """
     Admin interface for Book model.
     """
-    list_display = ['title', 'slug', 'author', 'genre', 'price', 'created_on']
+    list_display = ['title', 'author', 'genre', 'price', 'created_on']
     search_fields = [
         'title', 'slug', 'author__name', 'genre__friendly_name', 'description'
     ]
