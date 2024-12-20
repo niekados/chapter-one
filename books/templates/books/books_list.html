@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_title %}
+Books
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Books</h1>
+    <div class="row">
+        {% for book in books %}
+            <div class="col-3 mb-4">
+                <!-- Book div -->
+                <div class="card p-3 text-center shadow-sm">
+                    <h3 class="book-title">
+                        <a href="">
+                            {{ book.title }}
+                        </a>
+                    </h3>
+                    <p class="book-author">
+                            {{ book.author.name }}
+                    </p>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">No books available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
