@@ -2,6 +2,7 @@ from django.db import models
 from uuid import uuid4
 from django.utils.text import slugify
 from authors.models import Author
+import os
 
 
 class Genre(models.Model):
@@ -49,20 +50,18 @@ class Book(models.Model):
         - created_on (DateTimeField): The date the book was added.
     """
 
-    def upload_to(instance, filename):
+    def upload_to(filename):
         """
-        Slugify the title and add to slug field.
-        Append a UUID to ensure unique file name.
+        Slugify filanme and add UUID to ensure unique file name.
         """
-        slug = slugify(instance.title)
-        instance.slug = slug
-        ext = filename.split('.')[-1]
-        filename = f"{slug}-{uuid4()}.{ext}"
+        name, ext = os.path.splitext(filename)
+        name = slugify(name)
+        filename = f"{name}-{uuid4()[:8]}{ext}"
         return f'books/{filename}'
 
     title = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(
-        max_length=255, blank=True, editable=False
+        max_length=255, blank=True, unique=True
     )
     author = models.ForeignKey(
         Author, on_delete=models.PROTECT, null=False, blank=False
@@ -76,6 +75,13 @@ class Book(models.Model):
     )
     file = models.FileField(upload_to=upload_to, null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Create slug from author name and title if slug field is empty.
+        if not self.slug:
+            title_and_name = f"{self.title}-{self.author.name}"
+            self.slug = slugify(title_and_name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
