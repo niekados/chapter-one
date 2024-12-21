@@ -9,22 +9,46 @@ Books
 {% block content %}
 <div class="container">
     <h1 class="text-center">Books</h1>
+
+    <div class="droppdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Genres
+        </button>
+        <ul class="dropdown-menu">
+            {% for genre in genres %}
+            <li class="dropdown-item">
+                <a href="{% url 'books_list' %}?genre={{ genre.name }}"
+                    class="{% if genre.name == current_genre %}active{% endif %}">
+                    {{ genre.friendly_name }}
+                </a>
+            </li>
+            {% endfor %}
+
+            <!-- Reset filter button -->
+            {% if current_genre %}
+            <li class="dropdown-item"><a href="{% url 'books_list' %}">All Books</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+
+
     <div class="row">
         {% for book in books %}
-            <div class="col-3 mb-4">
-                <!-- Book div -->
-                <div class="card p-3 text-center shadow-sm">
-                    <h3 class="book-title">
-                        <a href="{% url 'book_detail' book.slug %}">{{ book.title }}</a>
-                            
-                    </h3>
-                    <p class="book-author">
-                            {{ book.author.name }}
-                    </p>
-                </div>
+        <div class="col-3 mb-4">
+            <!-- Book div -->
+            <div class="card p-3 text-center shadow-sm">
+                <h3 class="book-title">
+                    <a href="{% url 'book_detail' book.slug %}">{{ book.title }}</a>
+
+                </h3>
+                <p class="book-author">
+                    {{ book.author.name }}
+                </p>
             </div>
+        </div>
         {% empty %}
-            <p class="text-center">No books available at the moment.</p>
+        <p class="text-center">No books available at the moment.</p>
         {% endfor %}
     </div>
 </div>
