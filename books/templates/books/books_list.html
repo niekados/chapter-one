@@ -78,6 +78,11 @@ Books
                 </option>
             </select>
         </form>
+        {% if search_keyword or current_genre or current_sorting != 'latest_desc' %}
+    <span class="small"><a href="{% url 'books_list' %}"></span>
+        Clear all filters
+    </a>
+{% endif %}
     </section>
 
     <div class="row">
