@@ -10,28 +10,57 @@ Books
 <div class="container">
     <h1 class="text-center">Books</h1>
 
-    <div class="droppdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Genres
-        </button>
-        <ul class="dropdown-menu">
-            {% for genre in genres %}
-            <li class="dropdown-item">
-                <a href="{% url 'books_list' %}?genre={{ genre.name }}"
-                    class="{% if genre.name == current_genre %}active{% endif %}">
-                    {{ genre.friendly_name }}
-                </a>
-            </li>
-            {% endfor %}
+    <!-- Display currently selected genre -->
+    {% for genre in genres %}
+    {% if genre.name == current_genre %}
+    <p>{{ genre.friendly_name }}</p>
+    {% endif %}
+    {% endfor %}
+    {% if search_keyword %}
+    <p>You searched for {{ search_keyword }}</p>
+    {% endif %}
 
-            <!-- Reset filter button -->
-            {% if current_genre %}
-            <li class="dropdown-item"><a href="{% url 'books_list' %}">All Books</a></li>
+    <section class="container d-flex">
+        <h2>Filter:</h2>
+        <!-- Filter by genre -->
+        <form method="GET" action="{% url 'books_list' %}">
+            {% if search_keyword %}
+            <input type="hidden" name="q" value="{{ search_keyword }}">
             {% endif %}
-        </ul>
-    </div>
+            <select name="genre" class="form-select" onchange="this.form.submit()">
+                <option value="">All Genres</option>
+                {% for genre in genres %}
+                <option value="{{ genre.name }}" {% if genre.name == current_genre %}selected{% endif %}>
+                    {{ genre.friendly_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </form>
 
-
+        <!-- Sort by title or price -->
+        <form method="GET" action="{% url 'books_list' %}">
+            {% if search_keyword %}
+            <input type="hidden" name="q" value="{{ search_keyword }}">
+            {% endif %}
+            {% if current_genre %}
+            <input type="hidden" name="genre" value="{{ current_genre }}">
+            {% endif %}
+            <select name="sort" class="form-select" onchange="this.form.submit()">
+                <option value="title_asc" {% if current_sorting == 'title_asc' %}selected{% endif %}>
+                    Name A-Z
+                </option>
+                <option value="title_desc" {% if current_sorting == 'title_desc' %}selected{% endif %}>
+                    Name Z-A
+                </option>
+                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>
+                    Price ↑
+                </option>
+                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>
+                    Price ↓
+                </option>
+            </select>
+        </form>
+    </section>
 
     <div class="row">
         {% for book in books %}
@@ -45,7 +74,9 @@ Books
                 <p class="book-author">
                     {{ book.author.name }}
                 </p>
+
             </div>
+            {{ book.genre }}
         </div>
         {% empty %}
         <p class="text-center">No books available at the moment.</p>

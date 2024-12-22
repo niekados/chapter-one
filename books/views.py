@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 from .models import Book, Genre
 
 
@@ -9,14 +10,38 @@ def all_books(request):
 
     books = Book.objects.all()
     genres = Genre.objects.all()
+
     query = None
     selected_genre = None
+    sort = None
+    direction = None
 
-    # Categories
     if request.GET:
+
+        # Sorting
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+
+            if '_' in sortkey:
+                sort, direction = sortkey.split('_')
+
+            sort_field = sort
+            if sort == 'title':
+                books = books.annotate(lower_title=Lower('title'))
+                sort_field = 'lower_title'
+            elif sort == 'price':
+                sort_field = 'price'
+
+            if direction == 'desc':
+                sort_field = f'-{sort_field}'
+
+            books = books.order_by(sort_field)
+
+        # Filtering by genre
         if 'genre' in request.GET:
             selected_genre = request.GET['genre']
-            books = books.filter(genre__name=selected_genre)
+            if selected_genre:
+                books = books.filter(genre__name=selected_genre)
 
         # Search functionality
         if 'q' in request.GET:
@@ -32,11 +57,14 @@ def all_books(request):
             )
             books = books.filter(queries)
 
+    current_sorting = request.GET.get('sort', 'title_asc')
+
     context = {
         'books': books,
         'genres': genres,
         'search_keyword': query,
         'current_genre': selected_genre,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'books/books_list.html', context)

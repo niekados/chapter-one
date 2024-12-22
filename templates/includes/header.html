@@ -59,6 +59,13 @@
 
 <!-- Search form -->
 <form class="d-flex justify-content-center mt-3" role="search" method="GET" action="{% url 'books_list' %}">
-    <input class="form-control w-50 me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+    <input class="form-control w-50 me-2" type="search" name="q" placeholder="Search" aria-label="Search"
+        {% if search_keyword %}value="{{ search_keyword }}"{% endif %}>
+    {% if current_sorting %}
+    <input type="hidden" name="sort" value="{{ current_sorting }}">
+    {% endif %}
+    {% if current_genre %}
+    <input type="hidden" name="genre" value="{{ current_genre }}">
+    {% endif %}
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
