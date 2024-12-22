@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -58,6 +59,11 @@ def all_books(request):
             books = books.filter(queries)
 
     current_sorting = request.GET.get('sort', 'title_asc')
+
+    # Pagination
+    paginator = Paginator(books, 6)
+    page = request.GET.get('page')
+    books = paginator.get_page(page)
 
     context = {
         'books': books,
