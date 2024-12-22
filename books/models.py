@@ -50,13 +50,13 @@ class Book(models.Model):
         - created_on (DateTimeField): The date the book was added.
     """
 
-    def upload_to(filename):
+    def upload_to(instance, filename):
         """
         Slugify filanme and add UUID to ensure unique file name.
         """
         name, ext = os.path.splitext(filename)
         name = slugify(name)
-        filename = f"{name}-{uuid4()[:8]}{ext}"
+        filename = f"{name}-{str(uuid4())[:8]}{ext}"
         return f'books/{filename}'
 
     title = models.CharField(max_length=255, null=False, blank=False)
