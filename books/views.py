@@ -9,7 +9,7 @@ from .models import Book, Genre
 def all_books(request):
     """ A view to show a list of all books """
 
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('-created_on')
     genres = Genre.objects.all()
 
     query = None
@@ -32,6 +32,11 @@ def all_books(request):
                 sort_field = 'lower_title'
             elif sort == 'price':
                 sort_field = 'price'
+            elif sort == 'latest':
+                sort_field = 'created_on'
+            elif sort == 'author':
+                books = books.annotate(lower_author=Lower('author__name'))
+                sort_field = 'lower_author'
 
             if direction == 'desc':
                 sort_field = f'-{sort_field}'
@@ -58,7 +63,7 @@ def all_books(request):
             )
             books = books.filter(queries)
 
-    current_sorting = request.GET.get('sort', 'title_asc')
+    current_sorting = request.GET.get('sort', 'latest_desc')
 
     # Pagination
     paginator = Paginator(books, 6)

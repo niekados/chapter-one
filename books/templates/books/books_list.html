@@ -55,11 +55,20 @@ Books
             <input type="hidden" name="genre" value="{{ current_genre }}">
             {% endif %}
             <select name="sort" class="form-select" onchange="this.form.submit()">
+                <option value="latest_desc" {% if current_sorting == 'latest_desc' %}selected{% endif %}>
+                    Latest Books
+                </option>
                 <option value="title_asc" {% if current_sorting == 'title_asc' %}selected{% endif %}>
-                    Name A-Z
+                    Title A-Z
                 </option>
                 <option value="title_desc" {% if current_sorting == 'title_desc' %}selected{% endif %}>
-                    Name Z-A
+                    Title Z-A
+                </option>
+                <option value="author_asc" {% if current_sorting == 'author_asc' %}selected{% endif %}>
+                    Author A-Z
+                </option>
+                <option value="author_desc" {% if current_sorting == 'author_desc' %}selected{% endif %}>
+                    Author Z-A
                 </option>
                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>
                     Price ↑
