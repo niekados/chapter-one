@@ -29,28 +29,35 @@
                 </li>
                 {% endif %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="dynamic"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        data-bs-display="dynamic" aria-expanded="false">
                         Account
                     </a>
                     <!-- Collapsable Navbar Links -->
                     <ul class="dropdown-menu dropdown-menu-end">
                         {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                            <li><a class="dropdown-item" href="#">Manage Books</a></li>
-                            <li><a class="dropdown-item" href="#">Manage Authors</a></li>
-                            {% endif %}
-                            <li><a class="dropdown-item" href="#">My Account</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                        {% if request.user.is_superuser %}
+                        <li><a class="dropdown-item" href="#">Manage Books</a></li>
+                        <li><a class="dropdown-item" href="#">Manage Authors</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="#">My Account</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                         {% else %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
                         {% endif %}
-                        
+
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'view_cart' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                <li class="nav-item d-flex align-items-center gap-2">
+                    <!-- Cart Icon -->
+                    <a class="nav-link" href="{% url 'view_cart' %}">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <!-- Total Price -->
+                    {% if cart_items %}
+                        <span class="text-muted"><small>€{{ total|floatformat:2 }}</small></span>
+                    {% endif %}
                 </li>
             </ul>
         </div>
@@ -60,7 +67,7 @@
 <!-- Search form -->
 <form class="d-flex justify-content-center mt-3" role="search" method="GET" action="{% url 'books_list' %}">
     <input class="form-control w-50 me-2" type="search" name="q" placeholder="Search" aria-label="Search"
-        {% if search_keyword %}value="{{ search_keyword }}"{% endif %}>
+        {% if search_keyword %}value="{{ search_keyword }}" {% endif %}>
     {% if current_sorting %}
     <input type="hidden" name="sort" value="{{ current_sorting }}">
     {% endif %}
