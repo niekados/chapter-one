@@ -18,7 +18,8 @@ Shopping Cart
         <div class="col">
             {% if cart_items %}
             <div class="table-responsive rounded">
-
+                {{ cart_items }}
+                <p>Total: {{ total }}</p>
             </div>
             {% else %}
             <p class="lead mb">Your cart is empty</p>
