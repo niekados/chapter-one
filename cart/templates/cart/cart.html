@@ -16,12 +16,12 @@ Shopping Cart
     </div>
     <div class="row">
         <div class="col">
-            {% if bag_items %}
+            {% if cart_items %}
             <div class="table-responsive rounded">
 
             </div>
             {% else %}
-            <p class="lead mb">Your bag is empty</p>
+            <p class="lead mb">Your cart is empty</p>
             <a href="{% url 'books_list' %}" class="btn btn-outline-dark btn-lg">
                 <span class="icon"><i class="fas fa-circle-chevron-left"></i> Back to Books</span>
             </a>

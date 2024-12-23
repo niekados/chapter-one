@@ -4,10 +4,10 @@ def cart_contents(request):
 
     cart_items = []
     total = 0
-    books_count = 0
+    books_count = len(cart_items)
 
     context = {
-        'cart_items': cart_items, 
+        'cart_items': cart_items,
         'total': total,
         'books_count': books_count,
     }
