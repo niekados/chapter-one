@@ -14,9 +14,22 @@ def add_to_cart(request, book_id):
 
     cart = request.session.get('cart', {})
 
-    if book_id not in cart:
-        cart[book_id] = 1
+    if str(book_id) not in cart:
+        cart[str(book_id)] = 1
 
     request.session['cart'] = cart
 
     return redirect(redirect_url)
+
+
+def remove_from_cart(request, book_id):
+    """ Remove a book from the shopping cart """
+
+    cart = request.session.get('cart', {})
+
+    if str(book_id) in cart:
+        cart.pop(str(book_id))
+
+    request.session['cart'] = cart
+
+    return redirect('view_cart')

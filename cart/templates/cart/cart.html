@@ -23,6 +23,7 @@ Shopping Cart
                         <tr>
                             <th scope="col">Book</th>
                             <th scope="col">Price</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     {% for item in cart_items %}
@@ -30,16 +31,21 @@ Shopping Cart
                             <td><a href="{% url 'book_detail' item.book.slug %}">{{ item.book.title }}</a> by {{ item.book.author }}</td>
                         
                        <td>€ {{ item.book.price }}</td>
+                       <!-- Remove book -->
+                       <td><a href="{% url 'remove_from_cart' item.book.id %}">Remove</a></td>
                     </tr>
                     {% endfor %}
                     <tr>
-                        <td><h6>Total: €{{ total|floatformat:2 }}</h6></td>
+                        <td>Total: </td>
+                        <td><h6>€ {{ total|floatformat:2 }}</h6></td>
+                        <td></td>
                     </tr>
                     <tr>
+                        <td><a href="{% url 'books_list' %}" class="btn btn-outline-dark btn-lg">More books</a></td>
                         <td>
-                            <a href="{% url 'books_list' %}" class="btn btn-outline-dark btn-lg">More books</a>
                             <a href="" class="btn btn-outline-dark btn-lg">Checkout</a>
                         </td>
+                        <td></td>
                     </tr>
                 </table>
             </div>

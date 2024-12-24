@@ -7,6 +7,7 @@ Books
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'books_list' %}" class="btn btn-outline-dark">Back to books</a>
 <div class="container">
     <h1 class="text-center">{{ book.title }}</h1>
     <div class="row">
@@ -35,7 +36,13 @@ Books
                     {% csrf_token %}
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
+                    {% if book_in_cart %}
+                    <button type="button" class="btn btn-secondary rounded-0 text-uppercase mt-3" disabled>
+                        In Cart
+                    </button>
+                    {% else %}
                     <input type="submit" class="btn btn-primary rounded-0 text-uppercase mt-3" value="Add to Cart">
+                    {% endif %}
                 </form>
 
 

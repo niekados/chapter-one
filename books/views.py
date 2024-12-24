@@ -86,6 +86,13 @@ def book_detail(request, slug):
 
     book = get_object_or_404(Book, slug=slug)
 
-    context = {'book': book}
+    cart = request.session.get('cart', {})
+
+    book_in_cart = str(book.id) in cart
+
+    context = {
+        'book': book,
+        'book_in_cart': book_in_cart,
+    }
 
     return render(request, 'books/book_detail.html', context)
