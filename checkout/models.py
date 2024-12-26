@@ -1,6 +1,6 @@
 from django.db import models
 from uuid import uuid4
-from django.db.models import Sum 
+from django.db.models import Sum
 from books.models import Book
 
 
@@ -33,7 +33,7 @@ class Order(models.Model):
         """
         Update order total by summing up prices of all line items.
         """
-        self.order_total = ( 
+        self.order_total = (
             self.lineitems.aggregate(Sum('price'))['price__sum'] or 0
         )
         self.save()
