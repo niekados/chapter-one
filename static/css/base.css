@@ -60,6 +60,16 @@ span.decorative {
     font-size: 110%;
 }
 
+/* Toasts */
+.toast-container {
+    z-index: 9999999;
+    top: 120px;
+}
+
+.toast {
+    border: var(--smoky-black) solid 1px;
+}
+
 /* Authors */
 
 .author-photo {
