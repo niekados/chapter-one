@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block extra_title %}
+Checkout
+{% endblock %}
+
+{% block content %}
+<div class="container mb-2">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2>Checkout</h2>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 col-lg-6 order-lg-last">
+            <h3>Order summary</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>Book</p>
+                </div>
+                <div class="col-4">
+                    <p>Author</p>
+                </div>
+                <div class="col-2">
+                    <p>Subtotal</p>
+                </div>
+            </div>
+            {% for item in cart_items %}
+            <div class="row">
+                <div class="col-6">
+                    
+                    <a href="{% url 'book_detail' item.book.slug %}">
+                        {{ item.book.title }}</a>
+            
+                </div>
+                <div class="col-4">
+                    <p>{{ item.book.author }}</p>
+                </div>
+                <div class="col-2">
+                    <p>€ {{ item.book.price }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-10">
+                <p>Order Total:</p>
+            </div>
+            <div class="col-2">
+                <p>€ {{ total | floatformat:2 }}</p>
+            </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Please fill out the order form</p>
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Details</legend>
+                    {{ order_form.full_name | as_crispy_field }}
+                    {{ order_form.email | as_crispy_field }}
+                </fieldset>
+                <fieldset>
+                    <legend>Billing</legend>
+                    {{ order_form.phone_number | as_crispy_field }}
+                    {{ order_form.country | as_crispy_field }}
+                    {{ order_form.postcode | as_crispy_field }}
+                    {{ order_form.town_or_city | as_crispy_field }}
+                    {{ order_form.street_address1 | as_crispy_field }}
+                    {{ order_form.street_address2 | as_crispy_field }}
+                    {{ order_form.county| as_crispy_field }}
+                    <div class="form-check form-check-inline">
+                        {% if user.is_authenticated %}
+                        <label for="id-save-info" class="form-check-label">Save billing information to my profile</label>
+                        <input type="checkbox" class="form-check-input" id="id-save-info" name="save-info" checked>
+                        {% else %}
+                        <label for="id-save-info" class="form-check-label">
+                            <a href="{% url 'account_signup' %}">Create an account</a>
+                            <a href="{% url 'account_login' %}">Login</a>
+                        </label>
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <!-- Stripe -->
+                    <legend>Payment</legend>
+                    <div id="card-element"></div>
+                    <div id="card-errors" class="text-danger" role="alert"></div>
+                </fieldset>
+
+                <div class="submit-button">                    
+                    <a href="{% url 'view_cart' %}" class="btn btn-outline-dark rounded-0">
+                        <span>Adjust Bag</span>
+                    </a>
+                    <button id="submit-button" class="btn btn-black rounded-0">
+                        <span>Submit Order</span>
+                    </button>
+                    <p class="small text-danger my-0">
+                        <span>Your card will be charged <strong>€ {{ total|floatformat:2 }}</strong></span>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
