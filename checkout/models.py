@@ -63,5 +63,10 @@ class OrderLineItem(models.Model):
         max_digits=10, decimal_places=2, null=False, blank=False
     )
 
+    def save(self, *args, **kwargs):
+        """Dynamically set the book's price."""
+        self.price = self.book.price
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f'{self.book.title} (Order: {self.order.order_number})'
