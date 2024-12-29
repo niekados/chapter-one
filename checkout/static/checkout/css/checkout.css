@@ -58,3 +58,17 @@
     margin: 0;
     height: 100%;
 }
+
+select,
+select option {
+  color: #171310;
+}
+
+select:invalid,
+select option[value=""] {
+  color: #aab7c4 !important;
+}
+
+#id_country {
+  border: #171310 1px solid;
+}
