@@ -23,7 +23,13 @@ var style = {
       color: '#dc3545',
     },
   };
-var card = elements.create('card', {style: style});
+
+var card = elements.create('card', {
+    style: style,
+    hidePostalCode: true        // Disable postal code input in the card element.
+                                // Reason: Use the form's postal code value instead,
+                                // preventing Stripe from overriding it with card details.
+});
 card.mount('#card-element');
 
 // Handle card element validation errors
@@ -76,6 +82,7 @@ form.addEventListener('submit', function(ev) {
                   city: $.trim(form.town_or_city.value),
                   country: $.trim(form.country.value),
                   state: $.trim(form.county.value),
+                  postal_code: $.trim(form.postcode.value),
                 }
               }
           }
