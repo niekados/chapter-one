@@ -76,3 +76,10 @@ span.decorative {
     width: 20vw;
     border-radius: 50%;
 }
+
+/* Allauth forms */
+
+.allauth-form-inner-content input {
+    border: #171310 1px solid;
+}
+
