@@ -36,11 +36,11 @@ def order_history(request, order_number):
         request,
         (
             f'Order {order_number} confirmation number, \
-            made on {order.date}.'
+            created on {order.date}.'
             )
     )
 
-    template = 'chekout/checkout_success.html'
+    template = 'checkout/checkout_success.html'
     context = {
         'order': order,
         'from_profile': True,
