@@ -96,6 +96,17 @@
         $('.toast').toast('show');
     });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const toastElements = document.querySelectorAll('.toast');
+      console.log("Toasts found:", toastElements.length);
+      toastElements.forEach(toastEl => {
+          console.log("Toast content:", toastEl.innerText); // Debug messages
+          const toast = new bootstrap.Toast(toastEl);
+          toast.show();
+      });
+  });
+</script>
   {% endblock %}
 
 </body>
