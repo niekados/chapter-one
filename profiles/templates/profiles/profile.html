@@ -18,7 +18,20 @@ My Profile
             <hr>
         </div>
     </div>
-    {{ profile }}    
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <p>Billing Details</p>
+            <form action="{% url 'profile' %}" method="POST" id="my-profile-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-secondary rounded-0">Update Details</button>
+            </form>
+        </div>
+        <div class="col-12 col-lg-6">
+            <p>Order History</p>
+            {{ orders }}
+        </div>
+    </div>  
 
 {% endblock %}
 
