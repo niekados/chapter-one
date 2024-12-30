@@ -1,13 +1,14 @@
 .profile-form-input {
-    color: #171310;
-    border: #171310 1px solid;
+  color: #171310;
+  border: #171310 1px solid;
 }
 
 #my-profile-form input::placeholder {
-    color: #aab7c4;
+  color: #aab7c4;
 }
 
-select:invalid,
-select option[value=""] {
-  color: #aab7c4 !important;
+.order-history {
+max-height: 500px;
+overflow-y: auto;
 }
+
