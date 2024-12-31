@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Book, Genre
+from .forms import BookForm
 
 
 def all_books(request):
@@ -96,3 +97,14 @@ def book_detail(request, slug):
     }
 
     return render(request, 'books/book_detail.html', context)
+
+
+def add_book(request):
+    """ A view for adding the book """
+    form = BookForm()
+    template = 'books/add_book.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

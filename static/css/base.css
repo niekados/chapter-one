@@ -83,3 +83,6 @@ span.decorative {
     border: #171310 1px solid;
 }
 
+.form-fields {
+    border: var(--smoky-black) 1px solid;
+}
