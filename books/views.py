@@ -101,7 +101,20 @@ def book_detail(request, slug):
 
 def add_book(request):
     """ A view for adding the book """
-    form = BookForm()
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Book has been added successfully!')
+            return redirect(reverse('add_book'))
+        else:
+            messages.error(
+                request, 'There was an error adding the book. \
+                Please check if the form is valid.'
+            )
+    else:
+        form = BookForm()
+
     template = 'books/add_book.html'
     context = {
         'form': form,

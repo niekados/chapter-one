@@ -16,8 +16,14 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Billing details updated successfully')
+        else:
+            messages.error(
+                request, 'There was an issue updating your billing details. \
+                Please check if the form is valid.'
+            )
+    else:
+        form = UserProfileForm(instance=profile)
 
-    form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
