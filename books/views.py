@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Book, Genre
@@ -99,8 +100,15 @@ def book_detail(request, slug):
     return render(request, 'books/book_detail.html', context)
 
 
+@login_required
 def add_book(request):
     """ A view for adding the book """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
@@ -123,8 +131,15 @@ def add_book(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_book(request, slug):
     """ Edit existing book """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+
     book = get_object_or_404(Book, slug=slug)
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES, instance=book)
@@ -152,8 +167,15 @@ def edit_book(request, slug):
     return render(request, template, context)
 
 
+@login_required
 def delete_book(request, book_id):
     """ Delete the book """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
     messages.success(
