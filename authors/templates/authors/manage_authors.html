@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_title %}
+Manage Authors
+{% endblock %}
+
+{% block content %}
+    <h2>Manage Authors</h2>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Author</th>
+                    <th></th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td><p>-</p></td>
+                        <td>
+                            <a href="{% url 'add_author' %}" class="btn btn-sm btn-success">Add Author</a>
+                        </td>
+                    </tr>
+                    {% for author in authors %}
+                    <tr>
+                        <td>{{ author.name }}</td>
+                        <td>
+                            <!-- Edit Button -->
+                            <a href="{% url 'edit_author' author.id %}" class="btn btn-sm btn-secondary">
+                                Edit
+                            </a>
+                            <!-- Delete Button -->
+                            <a href="{% url 'confirm_delete_author' author.id %}" class="btn btn-sm btn-danger ms-2">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </thead>
+        </table>
+    </div>
+{% endblock %}

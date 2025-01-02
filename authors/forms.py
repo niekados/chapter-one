@@ -5,7 +5,10 @@ from .models import Author
 
 class AuthorForm(forms.ModelForm):
 
-    biography = forms.CharField(widget=RichTextWidget())
+    biography = forms.CharField(
+        widget=RichTextWidget(),
+        required=False
+    )
 
     birth_date = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date'})

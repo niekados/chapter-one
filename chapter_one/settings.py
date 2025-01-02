@@ -80,17 +80,28 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 DJRICHTEXTFIELD_CONFIG = {
-    'js': ['//cdn.ckeditor.com/4.22.1/standard/ckeditor.js'],
-    'init_template': 'djrichtextfield/init/ckeditor.js',
+    'js': ['https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.2/tinymce.min.js'],
+    'init_template': 'djrichtextfield/init/tinymce.js',
     'settings': {
-        'toolbar': [
-            ['Format', 'Bold', 'Italic', 'NumberedList', 'BulletedList'],
-        ],
-        'format_tags': 'p;h1;h2;h3',
+        'toolbar': 'formatselect | bold italic underline | numlist bullist | visualblocks',
+        'plugins': 'lists visualblocks wordcount',
         'width': '100%',
-        'height': '300px',
-        'removePlugins': 'elementspath',
-        'resize_enabled': False,
+        'height': 300,
+        'menubar': False,
+        'resize': False,
+        'forced_root_block': 'p',
+        'block_formats': ';'.join([
+            'Paragraph=p',
+            'Heading 2=h2',
+            'Heading 3=h3',
+            'Heading 4=h4',
+            'Heading 5=h5',
+        ]),
+        'autoclean': True,
+        'sanitize': True,
+        'statusbar': False,
+        'elementpath': False,
+        'visualblocks_default_state': True,
     }
 }
 

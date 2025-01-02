@@ -15,7 +15,7 @@ Confirm Delete
         This action cannot be undone. All data related to this author will be permanently deleted.
     </p>
     <div class="d-flex justify-content-center gap-3">
-        <a href="{% url 'authors_list' %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'manage_authors' %}" class="btn btn-secondary">Cancel</a>
         <a href="{% url 'delete_author' author.id %}" class="btn btn-danger">Delete</a>
     </div>
 </div>

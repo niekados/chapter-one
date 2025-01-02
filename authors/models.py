@@ -20,7 +20,7 @@ class Author(models.Model):
         blank_label="Select country", null=False, blank=False
     )
     birth_date = models.DateField(null=False, blank=False)
-    biography = RichTextField(null=False, blank=False)
+    biography = RichTextField(null=True, blank=True)
     photo = models.ImageField(null=True, blank=True)
 
     def display_photo(self):

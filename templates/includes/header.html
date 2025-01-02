@@ -38,7 +38,7 @@
                         {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
                         <li><a class="dropdown-item" href="{% url 'manage_books' %}">Manage Books</a></li>
-                        <li><a class="dropdown-item" href="#">Manage Authors</a></li>
+                        <li><a class="dropdown-item" href="{% url 'manage_authors' %}">Manage Authors</a></li>
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>

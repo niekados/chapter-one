@@ -14,6 +14,21 @@ def authors_list(request):
 
 
 @login_required
+def owner_manage_authors(request):
+    """ View to display a list of all authors for site owner """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+        return redirect(reverse('authors_list'))
+    authors = Author.objects.all().order_by('name')
+    template = 'authors/manage_authors.html'
+    context = {'authors': authors}
+    return render(request, template, context)
+
+
+@login_required
 def add_author(request):
     """ A view for adding the author """
     if not request.user.is_superuser:
@@ -27,7 +42,7 @@ def add_author(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Author has been added successfully!')
-            return redirect(reverse('authors_list'))
+            return redirect(reverse('manage_authors'))
         else:
             messages.error(
                 request, 'There was an error adding the author. \
@@ -59,7 +74,7 @@ def edit_author(request, author_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Author has been successfully updated!')
-            return redirect(reverse('authors_list'))
+            return redirect('manage_authors')
         else:
             messages.error(
                 request, 'There was an error updating authors profile. \
@@ -88,7 +103,7 @@ def delete_author(request, author_id):
             request, 'Access denied. This action is restricted to the \
             site owner. Please log in with an owner account.'
         )
-        return redirect(reverse('authors_list'))
+        return redirect('author_list')
 
     author = get_object_or_404(Author, pk=author_id)
     author.delete()
@@ -96,7 +111,7 @@ def delete_author(request, author_id):
         request, f'Author "{author.name}" has been deleted successfully!'
     )
 
-    return redirect(reverse('authors_list'))
+    return redirect('manage_authors')
 
 
 @login_required
@@ -107,7 +122,7 @@ def confirm_delete_author(request, author_id):
             request, 'Access denied. This action is restricted to the \
             site owner. Please log in with an owner account.'
         )
-        return redirect(reverse('authors_list'))
+        return redirect('authors_list')
 
     author = get_object_or_404(Author, pk=author_id)
 

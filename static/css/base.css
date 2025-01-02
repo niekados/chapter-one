@@ -77,8 +77,10 @@ span.decorative {
     border-radius: 50%;
 }
 
-#cke_id_biography {
+/* Form: TinyMCE Rich Text Editor */
+.tox.tox-tinymce {
     border: var(--smoky-black) 1px solid;
+    border-radius: 8px;
 }
 
 /* Allauth forms */

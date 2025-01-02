@@ -24,7 +24,7 @@ Manage Authors
                 {% csrf_token %}
             {{ form|crispy }}
             <div class="d-flex gap-2">
-                <a href="{% url 'authors_list' %}" class="btn btn-secondary">Cancel</a>
+                <a href="{% url 'manage_authors' %}" class="btn btn-secondary">Cancel</a>
                 <button class="btn btn-primary" type="submit">Add Author</button>
             </div>
         </form>
