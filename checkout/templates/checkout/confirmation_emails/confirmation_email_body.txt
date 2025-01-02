@@ -1,25 +1,26 @@
 Hello {{ order.full_name }},  
 
-Thank you for your order at **Chapter One**! 📚  
+Thank you for your order at Chapter One! 📚  
 
 We’re excited to help you discover your next favorite read. Below are the details of your order:  
 
-**Order Number:** {{ order.order_number }}  
-**Order Date:** {{ order.date }}   
+Order Number: {{ order.order_number }} 
 
-**Books Ordered:**
+Order Date: {{ order.date }}   
+
+Books Ordered:
 {% for item in order.lineitems.all %}
-- **{{ item.book.title }}** by {{ item.book.author.name }} - €{{ item.price }}
+- {{ item.book.title }} by {{ item.book.author.name }} - €{{ item.price }}
 {% endfor %}
 
-**Order Total:** €{{ order.order_total }} 
+Order Total: €{{ order.order_total }} 
 
 
-Your purchased book(s) will be available in your **Chapter One library** shortly.  
+Your purchased book(s) will be available in your Chapter One library shortly.  
 
-If you have any questions or need assistance, feel free to reach out to us at **{{ contact_email }}**.  
+If you have any questions or need assistance, feel free to reach out to us at {{ contact_email }}.  
 
 Thank you for supporting new authors and independent stories. We can’t wait for you to dive into your new book! 📖✨  
 
 Warm Regards,  
-**The Chapter One Team**  
+The Chapter One Team
