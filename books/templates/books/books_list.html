@@ -101,18 +101,6 @@ Books
             </div>
             <p>{{ book.genre }}</p>
             <p>€{{ book.price }}</p>
-            {% if request.user.is_superuser %}
-            <div class="d-flex justify-content-center gap-2 mt-2">
-                <!-- Edit Button -->
-                <a href="{% url 'edit_book' book.slug %}" class="btn btn-sm btn-secondary">
-                    Edit
-                </a>
-                <!-- Delete Button -->
-                <a href="{% url 'delete_book' book.id %}" class="btn btn-sm btn-danger ms-2">
-                    Delete
-                </a>
-            </div>
-            {% endif %}
         </div>
         {% empty %}
         <p class="text-center">No books available at the moment.</p>

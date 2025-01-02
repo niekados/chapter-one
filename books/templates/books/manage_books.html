@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_title %}
+Manage Books
+{% endblock %}
+
+{% block content %}
+    <h2>Manage Books</h2>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th></th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td><p>-</p></td>
+                        <td><p>-</p></td>
+                        <td>
+                            <a href="{% url 'add_book' %}" class="btn btn-sm btn-success">Add Book</a>
+                        </td>
+                    </tr>
+                    {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>
+                            <!-- Edit Button -->
+                            <a href="{% url 'edit_book' book.slug %}" class="btn btn-sm btn-secondary">
+                                Edit
+                            </a>
+                            <!-- Delete Button -->
+                            <a href="{% url 'delete_book' book.id %}" class="btn btn-sm btn-danger ms-2">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </thead>
+        </table>
+    </div>
+{% endblock %}

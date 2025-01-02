@@ -72,6 +72,8 @@ def all_books(request):
     page = request.GET.get('page')
     books = paginator.get_page(page)
 
+    template = 'books/books_list.html'
+
     context = {
         'books': books,
         'genres': genres,
@@ -80,7 +82,7 @@ def all_books(request):
         'current_sorting': current_sorting,
     }
 
-    return render(request, 'books/books_list.html', context)
+    return render(request, template, context)
 
 
 def book_detail(request, slug):
@@ -92,12 +94,29 @@ def book_detail(request, slug):
 
     book_in_cart = str(book.id) in cart
 
+    template = 'books/book_detail.html'
+
     context = {
         'book': book,
         'book_in_cart': book_in_cart,
     }
 
-    return render(request, 'books/book_detail.html', context)
+    return render(request, template, context)
+
+
+@login_required
+def owner_manage_books(request):
+    """ View to display a list of all books for site owner """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+        return redirect(reverse('books_list'))
+    books = books = Book.objects.all().order_by('title')
+    template = 'books/manage_books.html'
+    context = {'books': books}
+    return render(request, template, context)
 
 
 @login_required
