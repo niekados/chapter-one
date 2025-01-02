@@ -194,6 +194,7 @@ def delete_book(request, book_id):
             request, 'Access denied. This action is restricted to the \
             site owner. Please log in with an owner account.'
         )
+        return redirect(reverse('books_list'))
 
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
@@ -201,4 +202,4 @@ def delete_book(request, book_id):
         request, f'Book "{book.title}" has been deleted successfully!'
     )
 
-    return redirect(reverse('books_list'))
+    return redirect(reverse('manage_books'))

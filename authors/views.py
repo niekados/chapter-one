@@ -78,3 +78,43 @@ def edit_author(request, author_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_author(request, author_id):
+    """ Delete the author """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+        return redirect(reverse('authors_list'))
+
+    author = get_object_or_404(Author, pk=author_id)
+    author.delete()
+    messages.success(
+        request, f'Author "{author.name}" has been deleted successfully!'
+    )
+
+    return redirect(reverse('authors_list'))
+
+
+@login_required
+def confirm_delete_author(request, author_id):
+    """ Confirm authors deletion """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+        return redirect(reverse('authors_list'))
+
+    author = get_object_or_404(Author, pk=author_id)
+
+    template = 'authors/confirm_author_delete.html'
+
+    context = {
+        'author': author,
+    }
+
+    return render(request, template, context)
