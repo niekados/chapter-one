@@ -84,11 +84,13 @@ DJRICHTEXTFIELD_CONFIG = {
     'init_template': 'djrichtextfield/init/ckeditor.js',
     'settings': {
         'toolbar': [
-            ['Format', 'Bold', 'Italic'],
-            ['NumberedList', 'BulletedList']
+            ['Format', 'Bold', 'Italic', 'NumberedList', 'BulletedList'],
         ],
         'format_tags': 'p;h1;h2;h3',
-        'width': '150%'
+        'width': '100%',
+        'height': '300px',
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
     }
 }
 
@@ -159,7 +161,7 @@ DATABASES = {
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
     "https://*.herokuapp.com",
-    "https://*.gitpod.io"
+    "https://*.gitpod.io",
 ]
 
 # Password validation

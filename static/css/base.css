@@ -77,6 +77,10 @@ span.decorative {
     border-radius: 50%;
 }
 
+#cke_id_biography {
+    border: var(--smoky-black) 1px solid;
+}
+
 /* Allauth forms */
 
 .allauth-form-inner-content input {
@@ -86,3 +90,4 @@ span.decorative {
 .form-fields {
     border: var(--smoky-black) 1px solid;
 }
+
