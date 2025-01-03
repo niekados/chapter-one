@@ -5,6 +5,8 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from books.models import Book
 from profiles.models import UserProfile
+from library.models import LibraryEntry
+from django.contrib.auth.models import User
 import json
 import time
 import stripe
@@ -66,17 +68,28 @@ class StripeWH_Handler:
         # Update profile info when save_info is checked
         profile = None
         username = intent.metadata.username
-        if username != 'AnonymousUser':
-            profile = UserProfile.objects.get(user__username=username)
-            if save_info:
-                profile.default_phone_number = billing_details.phone
-                profile.default_country = billing_details.address.country
-                profile.default_postcode = billing_details.address.postal_code
-                profile.default_town_or_city = billing_details.address.city
-                profile.default_street_address1 = billing_details.address.line1
-                profile.default_street_address2 = billing_details.address.line2
-                profile.default_county = billing_details.address.state
-                profile.save()
+
+        # Make sure user is authenticated
+        if username == 'AnonymousUser':
+            return HttpResponse(
+                content='Webhook received: AnonymousUser \
+                    cannot purchase books.',
+                status=400
+            )
+
+        # Fetch the authenticated user
+        user = User.objects.get(username=username)
+
+        profile = UserProfile.objects.get(user__username=username)
+        if save_info:
+            profile.default_phone_number = billing_details.phone
+            profile.default_country = billing_details.address.country
+            profile.default_postcode = billing_details.address.postal_code
+            profile.default_town_or_city = billing_details.address.city
+            profile.default_street_address1 = billing_details.address.line1
+            profile.default_street_address2 = billing_details.address.line2
+            profile.default_county = billing_details.address.state
+            profile.save()
 
         order_exists = False
         attempt = 1
@@ -102,6 +115,14 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+
+            # Add books to users library
+            for line_item in order.lineitems.all():
+                LibraryEntry.objects.get_or_create(
+                    user=user,
+                    book=line_item.book,
+                )
+
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: \
@@ -132,6 +153,13 @@ class StripeWH_Handler:
                         book=book,
                     )
                     order_line_item.save()
+
+                    # Add books to user's library
+                    LibraryEntry.objects.get_or_create(
+                        user=user,
+                        book=book,
+                    )
+
             except Exception as e:
                 if order:
                     order.delete()

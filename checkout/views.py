@@ -8,6 +8,7 @@ from .models import Order, OrderLineItem
 from books.models import Book
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
+from library.models import LibraryEntry
 from cart.contexts import cart_contents
 from django.conf import settings
 import stripe
@@ -141,6 +142,19 @@ def checkout_success(request, order_number):
     profile = UserProfile.objects.get(user=request.user)
     order.user_profile = profile
     order.save()
+
+    # Add purchased books to user's library
+    try:
+        for line_item in order.lineitems.all():
+            LibraryEntry.objects.get_or_create(
+                user=request.user,
+                book=line_item.book,
+            )
+    except Exception:
+        messages.error(
+            request, "There was an error adding books to your library."
+        )
+        return redirect('checkout')
 
     if save_info:
         profile_data = {
