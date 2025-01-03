@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import ProtectedError
 from .forms import AuthorForm
 from .models import Author
 
@@ -106,10 +107,18 @@ def delete_author(request, author_id):
         return redirect('authors_list')
 
     author = get_object_or_404(Author, pk=author_id)
-    author.delete()
-    messages.success(
-        request, f'Author "{author.name}" has been deleted successfully!'
-    )
+    try:
+        author.delete()
+        messages.success(
+            request, f'Author "{author.name}" has been deleted successfully!'
+        )
+    except ProtectedError:
+        book_count = author.book_set.count()
+        messages.error(
+            request,
+            f"Cannot delete author. {book_count} book(s) are linked \
+                to this author."
+        )
 
     return redirect('manage_authors')
 
