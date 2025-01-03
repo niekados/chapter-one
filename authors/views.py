@@ -103,7 +103,7 @@ def delete_author(request, author_id):
             request, 'Access denied. This action is restricted to the \
             site owner. Please log in with an owner account.'
         )
-        return redirect('author_list')
+        return redirect('authors_list')
 
     author = get_object_or_404(Author, pk=author_id)
     author.delete()

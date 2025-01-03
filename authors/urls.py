@@ -8,7 +8,7 @@ urlpatterns = [
     path('edit/<int:author_id>/', views.edit_author, name='edit_author'),
     path('delete/<int:author_id>/', views.delete_author, name='delete_author'),
     path(
-        'confirm_delete/<int:author_id>/',
+        'confirm_author_delete/<int:author_id>/',
         views.confirm_delete_author,
         name='confirm_delete_author'
     ),

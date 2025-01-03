@@ -203,3 +203,24 @@ def delete_book(request, book_id):
     )
 
     return redirect(reverse('manage_books'))
+
+
+@login_required
+def confirm_delete_book(request, book_id):
+    """ Confirm book deletion """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Access denied. This action is restricted to the \
+            site owner. Please log in with an owner account.'
+        )
+        return redirect('books_list')
+
+    book = get_object_or_404(Book, pk=book_id)
+
+    template = 'books/confirm_book_delete.html'
+
+    context = {
+        'book': book,
+    }
+
+    return render(request, template, context)
