@@ -29,7 +29,7 @@ Books
                 </p>
                 <p>{{ book.genre }}</p>
                 <h4>
-                    <a href="{{ book.file.url }}" download>Download Book</a>
+                    <a href="{% url 'download_book' book.id %}" download>Download Book</a>
                 </h4>
 
                 <form class="form" action="{% url 'add_to_cart' book.id %}" method="POST">

@@ -26,7 +26,7 @@ My Library
 
             </div>
             <p><span class="badge bg-secondary">{{ entry.book.genre }}</span></p>
-            <a href="#" download class="btn btn-primary btn-sm">Download</a>
+            <a href="{% url 'download_book' entry.book.id %}" download class="btn btn-primary btn-sm">Download</a>
         </div>
         {% empty %}
         <p class="text-center">You haven't purchased any books yet.</p>
