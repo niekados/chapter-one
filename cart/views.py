@@ -6,6 +6,9 @@ from books.models import Book
 def view_cart(request):
     """ A view for shopping cart """
 
+    if not request.user.is_authenticated:
+        messages.info(request, 'Please login to complete your purchase.')
+
     return render(request, 'cart/cart.html')
 
 

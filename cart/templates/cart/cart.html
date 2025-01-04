@@ -43,7 +43,11 @@ Shopping Cart
                     <tr>
                         <td><a href="{% url 'books_list' %}" class="btn btn-outline-dark btn-lg">More books</a></td>
                         <td>
+                            {% if request.user.is_authenticated %}
                             <a href="{% url 'checkout' %}" class="btn btn-outline-dark btn-lg">Checkout</a>
+                            {% else %}
+                            <p><strong>Please <a href="{% url 'account_login' %}">login</a> to checkout</strong></p>
+                        {% endif %}
                         </td>
                         <td></td>
                     </tr>
