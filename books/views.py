@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from library.models import LibraryEntry
 from .models import Book, Genre
 from .forms import BookForm
 
@@ -94,11 +95,20 @@ def book_detail(request, slug):
 
     book_in_cart = str(book.id) in cart
 
+    # Check if user owns a book
+    user_owns_book = False
+    if request.user.is_authenticated:
+        user_owns_book = LibraryEntry.objects.filter(
+            user=request.user,
+            book=book
+        ).exists()
+
     template = 'books/book_detail.html'
 
     context = {
         'book': book,
         'book_in_cart': book_in_cart,
+        'user_owns_book': user_owns_book,
     }
 
     return render(request, template, context)
