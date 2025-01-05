@@ -25,10 +25,16 @@ html, body {
     height: 100%; 
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 main {
     background-color: var(--dun);
     font-family: var(--body-font);
     margin-top: 120px;
+    flex: 1;
 }
 
 /* Header */
@@ -93,3 +99,40 @@ span.decorative {
     border: var(--smoky-black) 1px solid;
 }
 
+/* Footer */
+
+footer {
+    border-top: 1px solid var(--smoky-black);
+    padding: 10px 0;
+}
+
+.footer a {
+    color: var(--smoky-black);
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.footer-text {
+    font-size: 1.2em;
+}
+
+.privacy-link:hover {
+    color: #1877F2;
+    text-decoration: underline;
+}
+
+.social-links a {
+    font-size: 2em;
+}
+
+.facebook:hover {
+    color: #1877F2;
+}
+
+.instagram:hover {
+    color: #cd486b;
+}
+
+.twitter:hover {
+    color: rgba(23,19,16, 0.7);
+}
