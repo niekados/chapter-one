@@ -33,7 +33,7 @@ body {
 main {
     background-color: var(--dun);
     font-family: var(--body-font);
-    padding-top: 140px;
+    padding-top: 170px;
     flex: 1;
 }
 
@@ -50,7 +50,18 @@ header {
 
 /* Logo */
 .navbar-brand {
-    font-size: 1.9em;
+    margin-right: 20px;
+}
+
+/* Hamburger menu icon */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem; 
+}
+
+.navbar-toggler-icon {
+    color: var(--smoky-black);
 }
 
 /* Navigation links */
@@ -95,14 +106,12 @@ header .navbar-nav li.active .nav-link {
 }
 
 /* Cart icon */
-.shopping-cart .nav-link i {
-    font-size: 1.1em;
+.shopping-cart i {
+    font-size: 1.7em;
 }
 
-.shopping-cart {
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
+.shopping-cart i:hover {
+    color: rgba(23,19,16, 0.7);
 }
 
 /* Search bar */
@@ -154,6 +163,19 @@ span.decorative {
 
 .toast {
     border: var(--smoky-black) solid 1px;
+}
+
+/* Home page */
+.quote {
+    background-color: var(--white);
+    border: 3px double var(--smoky-black);
+    border-radius: 8px;
+    font-size: 1.5em;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+.about-us {
+    font-size: 1.4em;
 }
 
 /* Authors */
@@ -218,19 +240,19 @@ footer {
 
 /* Tablets and larger (768px and larger) */
 @media screen and (min-width: 768px) {
-   
+    .navbar-brand {
+        font-size: 1.5em;
+    }
 }
 
 /* Laptops and larger (992px and larger) */
 @media screen and (min-width: 992px) {
-    .shopping-cart {
-        position: static;
-        transform: none;
-    }
-   
+    
 }
 
 /* Desktops and larger (1200px and larger) */
 @media screen and (min-width: 1200px) {
-    
+    .navbar-brand {
+        font-size: 1.9em;
+    }
 }

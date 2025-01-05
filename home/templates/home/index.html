@@ -6,35 +6,45 @@ Home
 {% endblock %}
 
 {% block content %}
-<h1>Welcome to Chapter<span class="decorative">O</span>ne</h1>
+<div class="container d-flex flex-column align-items-center text-center">
 
-<!-- Literary Quote -->
-<section class="quote">
+  <h1>Your Chapter<span class="decorative">O</span>ne starts here</h1>
+
+    <!-- Call to action -->
+    <div class="my-4">
+      <a href="{% url 'books_list' %}" class="btn-chapter-one">Discover new books</a>
+    </div>
+  
+
+  <!-- Literary quote -->
+  <section class="quote my-4 p-4">
     <p>“{{ content.quote }}”</p>
     <p><small>— {{ content.quote_author }}</small></p>
+  </section>
+
+  <!-- About us -->
+  <section class="about-us my-4 d-flex justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+          <h2>About Us</h2>
+            <div class="col-12 col-md-8 col-lg-7 text-start">
+                <p>{{ content.about|safe }}</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Call to Action -->
- <section>
- <h2>Your First Chapter Starts Here</h2>
-</section>
+  <!-- Get published form -->
+  <section class="col-12 col-md-8 col-lg-6 my-4">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+  </section>
 
-<!-- About Us -->
-<section>
-<h2>About Us</h2>
-<p>{{ content.about|safe }}</p>
-</section>
-
-<!-- Get Published Form -->
- <section class="w-50 text-center">
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</section>
-
+</div>
 {% endblock %}
