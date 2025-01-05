@@ -5,7 +5,7 @@
 
     /* Fonts */
     /* Headers, Navigation links, and Buttons */
-    --links-font: "Space Mono", serif;
+    --primary-font: "Space Mono", serif;
     /* Decorative Text */
     --deco-font: "Cinzel Decorative", serif;
     /* Main Body */
@@ -33,37 +33,117 @@ body {
 main {
     background-color: var(--dun);
     font-family: var(--body-font);
-    margin-top: 120px;
+    padding-top: 140px;
     flex: 1;
 }
 
-/* Header */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--primary-font); 
+}
 
+/* Header */
 header {
     background-color: var(--white);
     padding-bottom: 8px;
     border-bottom: 1px solid var(--smoky-black);
 }
 
+/* Logo */
+.navbar-brand {
+    font-size: 1.9em;
+}
+
+/* Navigation links */
 header li a.nav-link {
-    font-family: var(--links-font);
+    font-family: var(--primary-font);
+    font-size: 1.3em;
     color: var(--smoky-black);
+    padding: 0.1rem 0.6rem;
+    transition: all 0.2s ease;
 }
 
-header form {
-    font-family: var(--links-font);
+header li a.nav-link:hover {
+    background-color: var(--smoky-black);
+    color: var(--white);
+    border-radius: 0.25rem;
 }
 
+.dropdown-menu {
+    font-family: var(--primary-font); 
+    --bs-dropdown-link-hover-bg: var(--smoky-black);
+    --bs-dropdown-link-hover-color: var(--white);
+    --bs-dropdown-link-active-color: var(--white);
+    --bs-dropdown-link-active-bg: var(--smoky-black);
+    --bs-dropdown-border-color: var(--smoky-black);
+}
+
+header .navbar-nav li.active .nav-link {
+    background-color: var(--smoky-black);
+    color: var(--white) !important;
+    border-radius: 0.25rem;
+}
+
+/* Shopping cart bubble */
+.cart-badge {
+    background-color: var(--smoky-black);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.8em;
+    padding: 0.3em 0.5em;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+/* Cart icon */
+.shopping-cart .nav-link i {
+    font-size: 1.1em;
+}
+
+.shopping-cart {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+/* Search bar */
+.search-bar {
+    font-family: var(--primary-font);
+}
+
+.search-bar input.form-control {
+    border: 1px solid var(--smoky-black);
+}
+
+/* Letter decorations */
 span.decorative {
     font-family: var(--deco-font);
     font-weight: 400;
     font-size: 110%;
 }
 
-
 .quote p::first-letter {
     font-family: var(--deco-font);
     font-size: 110%;
+}
+
+/* Buttons */
+.btn-chapter-one {
+    font-family: var(--primary-font);
+    font-size: 1.1em;
+    color: var(--smoky-black);
+    background-color: var(--white);
+    border: 1px solid var(--smoky-black);
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-chapter-one:hover {
+    color: var(--white);
+    background-color: var(--smoky-black);
+
 }
 
 /* Toasts */
@@ -77,7 +157,6 @@ span.decorative {
 }
 
 /* Authors */
-
 .author-photo {
     width: 20vw;
     border-radius: 50%;
@@ -90,7 +169,6 @@ span.decorative {
 }
 
 /* Allauth forms */
-
 .allauth-form-inner-content input {
     border: #171310 1px solid;
 }
@@ -100,13 +178,12 @@ span.decorative {
 }
 
 /* Footer */
-
 footer {
     border-top: 1px solid var(--smoky-black);
     padding: 10px 0;
 }
 
-.footer a {
+.footer-container a {
     color: var(--smoky-black);
     transition: color 0.3s;
     text-decoration: none;
@@ -135,4 +212,25 @@ footer {
 
 .twitter:hover {
     color: rgba(23,19,16, 0.7);
+}
+
+/* Media Queries */
+
+/* Tablets and larger (768px and larger) */
+@media screen and (min-width: 768px) {
+   
+}
+
+/* Laptops and larger (992px and larger) */
+@media screen and (min-width: 992px) {
+    .shopping-cart {
+        position: static;
+        transform: none;
+    }
+   
+}
+
+/* Desktops and larger (1200px and larger) */
+@media screen and (min-width: 1200px) {
+    
 }
