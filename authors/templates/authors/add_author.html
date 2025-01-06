@@ -1,37 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block extra_title %}
-Manage Authors
+Add Author
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2>Manage Authors</h2>
-            <h5>Add Author</h5>
-            <hr>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col">
-            
-            <form action="{% url 'add_author' %}" method="POST" class="form" enctype="multipart/form-data">
-                {% csrf_token %}
-            {{ form|crispy }}
-            <div class="d-flex gap-2">
-                <a href="{% url 'manage_authors' %}" class="btn btn-secondary">Cancel</a>
-                <button class="btn btn-primary" type="submit">Add Author</button>
+<div class="container pb-5">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">Add Author</h1>
+
+    <!-- Form -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <!-- Form card -->
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <!-- Form heading -->
+                    <h5 class="mb-3">Enter Author Details</h5>
+                    <hr>
+
+                    <!-- Form -->
+                    <form action="{% url 'add_author' %}" method="POST" enctype="multipart/form-data" class="form">
+                        {% csrf_token %}
+                        <!-- Crispy form -->
+                        {{ form|crispy }}
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+                            <!-- Cancel button -->
+                            <a href="{% url 'manage_authors' %}" class="btn-chapter-one">
+                                <i class="fa-solid fa-ban"></i> Cancel
+                            </a>
+
+                            <!-- Submit button -->
+                            <button class="btn-chapter-one btn-green" type="submit">
+                                <i class="fa-solid fa-plus"></i> Add Author
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block extra_js %}
