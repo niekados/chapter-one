@@ -198,6 +198,13 @@ span.decorative {
     font-weight: 700;
 }
 
+/* Forms */
+.form-card {
+    border: 1px solid var(--smoky-black);
+    border-radius: 8px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Toasts */
 .toast-container {
     z-index: 9999999;
@@ -307,6 +314,11 @@ footer {
     .table-btn-container {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .btn-chapter-one {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.9rem;
     }
 }
 
