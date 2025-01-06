@@ -10,116 +10,138 @@ Checkout
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2>Checkout</h2>
-            <hr>
-        </div>
-    </div>
-    
-    <div class="row">
+<div class="container pb-5">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">Checkout</h1>
+
+    <div class="row g-4">
+        <!-- Order summary -->
         <div class="col-12 col-lg-6 order-lg-last">
-            <h3>Order summary</h3>
-            <div class="row">
-                <div class="col-6">
-                    <p>Book</p>
-                </div>
-                <div class="col-4">
-                    <p>Author</p>
-                </div>
-                <div class="col-2">
-                    <p>Subtotal</p>
-                </div>
-            </div>
-            {% for item in cart_items %}
-            <div class="row">
-                <div class="col-6">
-                    
-                    <a href="{% url 'book_detail' item.book.slug %}">
-                        {{ item.book.title }}</a>
-            
-                </div>
-                <div class="col-4">
-                    <p>{{ item.book.author }}</p>
-                </div>
-                <div class="col-2">
-                    <p>€ {{ item.book.price }}</p>
-                </div>
-            </div>
-            {% endfor %}
-            <div class="row">
-                <div class="col-10">
-                <p>Order Total:</p>
-            </div>
-            <div class="col-2">
-                <p>€ {{ total | floatformat:2 }}</p>
-            </div>
-            </div>
+            <!-- Card for order summary -->
+            <div class="card form-card shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="mb-3">Order Summary</h5>
+                    <hr>
 
-        </div>
-        <div class="col-12 col-lg-6">
-            <p class="text-muted">Please fill out the order form</p>
-            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-                {% csrf_token %}
-                <fieldset>
-                    <legend>Details</legend>
-                    {{ order_form.full_name | as_crispy_field }}
-                    {{ order_form.email | as_crispy_field }}
-                </fieldset>
-                <fieldset>
-                    <legend>Billing</legend>
-                    {{ order_form.phone_number | as_crispy_field }}
-                    {{ order_form.street_address1 | as_crispy_field }}
-                    {{ order_form.street_address2 | as_crispy_field }}
-                    {{ order_form.town_or_city | as_crispy_field }}
-                    {{ order_form.county| as_crispy_field }}
-                    {{ order_form.postcode | as_crispy_field }}
-                    {{ order_form.country | as_crispy_field }}
-                    <div class="form-check form-check-inline">
-                        {% if user.is_authenticated %}
-                        <label for="id-save-info" class="form-check-label">Save billing information to my profile</label>
-                        <input type="checkbox" class="form-check-input" id="id-save-info" name="save-info" checked>
-                        {% else %}
-                        <label for="id-save-info" class="form-check-label">
-                            <a href="{% url 'account_signup' %}">Create an account</a>
-                            <a href="{% url 'account_login' %}">Login</a>
-                        </label>
-                        {% endif %}
+                    <!-- Order summary table -->
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <!-- Table header -->
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Book</th>
+                                    <th scope="col" class="text-center">Price</th>
+                                </tr>
+                            </thead>
+                            <!-- Table body -->
+                            <tbody>
+                                {% for item in cart_items %}
+                                <tr>
+                                    <!-- Book title and author -->
+                                    <td>
+                                        <a href="{% url 'book_detail' item.book.slug %}" class="cart-book-link">
+                                            {{ item.book.title }}
+                                        </a>
+                                        <p class="mb-0 text-muted">by {{ item.book.author }}</p>
+                                    </td>
+                                    <!-- Book price -->
+                                    <td class="text-center">€ {{ item.book.price }}</td>
+                                </tr>
+                                {% endfor %}
+                                <!-- Total row -->
+                                <tr>
+                                    <td class="fw-bold">Order Total:</td>
+                                    <td class="text-center fw-bold">€ {{ total|floatformat:2 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </fieldset>
-                <fieldset>
-                    <!-- Stripe -->
-                    <legend>Payment</legend>
-                    <!-- Stripe card element -->
-                    <div id="card-element"></div>
-                    <!-- Display Stripe errors -->
-                    <div id="card-errors" class="text-danger" role="alert"></div>
-                    <!-- Pass client secret to view for payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-
-                <div class="submit-button">                    
-                    <a href="{% url 'view_cart' %}" class="btn btn-outline-dark rounded-0">
-                        <span>Adjust Bag</span>
-                    </a>
-                    <button id="submit-button" class="btn btn-black rounded-0">
-                        <span>Submit Order</span>
-                    </button>
-                    <p class="small text-danger my-0">
-                        <span>Your card will be charged <strong>€ {{ total|floatformat:2 }}</strong></span>
-                    </p>
                 </div>
-            </form>
+            </div>
+        </div>
+
+        <!-- Checkout form -->
+        <div class="col-12 col-lg-6">
+            <!-- Card for checkout form -->
+            <div class="card form-card shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="mb-3">Billing Details</h5>
+                    <hr>
+
+                    <!-- Checkout form -->
+                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                        {% csrf_token %}
+
+                        <!-- User details -->
+                        <fieldset class="mb-4">
+                            <legend>Details</legend>
+                            {{ order_form.full_name | as_crispy_field }}
+                            {{ order_form.email | as_crispy_field }}
+                        </fieldset>
+
+                        <!-- Billing details -->
+                        <fieldset class="mb-4">
+                            <legend>Billing</legend>
+                            {{ order_form.phone_number | as_crispy_field }}
+                            {{ order_form.street_address1 | as_crispy_field }}
+                            {{ order_form.street_address2 | as_crispy_field }}
+                            {{ order_form.town_or_city | as_crispy_field }}
+                            {{ order_form.county | as_crispy_field }}
+                            {{ order_form.postcode | as_crispy_field }}
+                            {{ order_form.country | as_crispy_field }}
+
+                            <!-- Save info checkbox -->
+                            <div class="form-check">
+                                {% if user.is_authenticated %}
+                                <input type="checkbox" class="form-check-input" id="id-save-info" name="save-info" checked>
+                                <label for="id-save-info" class="form-check-label">
+                                    Save billing information to my profile
+                                </label>
+                                {% else %}
+                                <label for="id-save-info" class="form-check-label">
+                                    <a href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a href="{% url 'account_login' %}">Login</a> to save details.
+                                </label>
+                                {% endif %}
+                            </div>
+                        </fieldset>
+
+                        <!-- Payment Section -->
+                        <fieldset>
+                            <legend>Payment</legend>
+                            <div id="card-element" class="stripe-style-input"></div>
+                            <div id="card-errors" class="text-danger mt-2" role="alert"></div>
+                            <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                        </fieldset>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <!-- Adjust cart button -->
+                            <a href="{% url 'view_cart' %}" class="btn-chapter-one">
+                                <i class="fa-solid fa-arrow-left"></i> Adjust Cart
+                            </a>
+
+                            <!-- Submit order button -->
+                            <button id="submit-button" class="btn-chapter-one btn-green">
+                                <i class="fa-solid fa-credit-card"></i> Submit Order
+                            </button>
+                        </div>
+
+                        <!-- Payment note -->
+                        <p class="payment-note text-danger mt-3 text-center">
+                            Your card will be charged <strong>€ {{ total|floatformat:2 }}</strong>.
+                        </p>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Loading spinner -->
 <div id="loading-overlay">
     <h1 class="loading-spinner">
-        <span class="icon">
-            <i class="fas fa-3x fa-spinner fa-spin"></i>
-        </span>
+        <i class="fa-solid fa-spinner fa-spin"></i>
     </h1>
 </div>
 {% endblock %}

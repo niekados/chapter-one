@@ -29,7 +29,7 @@ Shopping Cart
                         {% for item in cart_items %}
                         <tr>
                             <!-- Book title -->
-                            <td class="cart-book-title">
+                            <td>
                                 <a href="{% url 'book_detail' item.book.slug %}" class="cart-book-link">
                                     {{ item.book.title }}
                                 </a>
