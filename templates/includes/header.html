@@ -13,15 +13,16 @@
             </a>
             <!-- Book count bubble -->
             {% if cart_items %}
-            <span class="cart-badge">
+            <span class="cart-badge" aria-label="Items in cart">
                 {{ cart_items|length }}
             </span>
             {% endif %}
         </div>
 
         <!-- Toggler button for mobile view -->
-        <button class="navbar-toggler order-lg-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-lg-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -45,27 +46,33 @@
                 {% if request.user.is_superuser %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    aria-haspopup="true" aria-expanded="false">
                         Admin
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item {% if url_name == 'manage_books' %}active{% endif %}" href="{% url 'manage_books' %}">Manage Books</a></li>
-                        <li><a class="dropdown-item {% if url_name == 'manage_authors' %}active{% endif %}" href="{% url 'manage_authors' %}">Manage Authors</a></li>
+                        <li><a class="dropdown-item {% if url_name == 'manage_books' %}active{% endif %}"
+                                href="{% url 'manage_books' %}">Manage Books</a></li>
+                        <li><a class="dropdown-item {% if url_name == 'manage_authors' %}active{% endif %}"
+                                href="{% url 'manage_authors' %}">Manage Authors</a></li>
                     </ul>
                 </li>
                 {% endif %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                        aria-haspopup="true" aria-expanded="false">
                         Account
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         {% if request.user.is_authenticated %}
-                        <li><a class="dropdown-item {% if url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}">My Profile</a></li>
-                        <li><a class="dropdown-item {% if url_name == 'account_logout' %}active{% endif %}" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li><a class="dropdown-item {% if url_name == 'profile' %}active{% endif %}"
+                                href="{% url 'profile' %}">My Profile</a></li>
+                        <li><a class="dropdown-item {% if url_name == 'account_logout' %}active{% endif %}"
+                                href="{% url 'account_logout' %}">Logout</a></li>
                         {% else %}
-                        <li><a class="dropdown-item {% if url_name == 'account_login' %}active{% endif %}" href="{% url 'account_login' %}">Login</a></li>
-                        <li><a class="dropdown-item {% if url_name == 'account_signup' %}active{% endif %}" href="{% url 'account_signup' %}">Register</a></li>
+                        <li><a class="dropdown-item {% if url_name == 'account_login' %}active{% endif %}"
+                                href="{% url 'account_login' %}">Login</a></li>
+                        <li><a class="dropdown-item {% if url_name == 'account_signup' %}active{% endif %}"
+                                href="{% url 'account_signup' %}">Register</a></li>
                         {% endif %}
                     </ul>
                 </li>
@@ -88,7 +95,7 @@
                 {% if current_genre %}
                 <input type="hidden" name="genre" value="{{ current_genre }}">
                 {% endif %}
-                <button class="btn-chapter-one" type="submit">Search</button>
+                <button class="btn-chapter-one" type="submit" aria-label="Search Button">Search</button>
             </form>
         </div>
     </div>

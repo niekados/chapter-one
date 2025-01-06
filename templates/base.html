@@ -9,6 +9,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Chapter One - Discover digital stories, poetry, and books by new authors. Explore and buy inspiring reads.">
+  <meta name="keywords" content="digital books, short stories, poetry, new authors, Chapter One">
+  <meta name="author" content="Vilmantas Zaleckas">
   {% endblock %}
 
   {% block extra_meta %}
@@ -50,7 +54,7 @@
   <link rel="icon" href="{% static 'favicon/favicon-512x512.png' %}" sizes="512x512" type="image/png">
   <link rel="icon" href="{% static 'favicon/favicon.ico' %}" type="image/x-icon">
 
-  <title>Chapter One - {% block extra_title %}{% endblock %}</title>
+  <title>Chapter One - {% block extra_title %}Discover Stories{% endblock %}</title>
 </head>
 
 <body>
@@ -103,9 +107,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toastElements = document.querySelectorAll('.toast');
-      console.log("Toasts found:", toastElements.length);
       toastElements.forEach(toastEl => {
-        console.log("Toast content:", toastEl.innerText); // Debug messages
         const toast = new bootstrap.Toast(toastEl);
         toast.show();
       });

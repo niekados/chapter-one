@@ -180,8 +180,29 @@ span.decorative {
 
 /* Authors */
 .author-photo {
-    width: 20vw;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
     border-radius: 50%;
+    border: 1px solid var(--smoky-black);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.author-name {
+    font-size: 1.5rem;
+    color: var(--smoky-black);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.author-bio * {
+    font-size: 1.4rem;
+    text-align: justify;
+}
+
+.author-birth-details {
+    font-size: 1.2rem;
+    font-style: italic;
 }
 
 /* Form: TinyMCE Rich Text Editor */

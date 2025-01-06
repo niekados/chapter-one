@@ -1,22 +1,41 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block extra_title %}
-Authors
-{% endblock %}
+{% block extra_title %}Authors{% endblock %}
 
 {% block content %}
-<h1>Meet Our Authors</h1>
-<div class="authors-list">
-    {% for author in authors %}
-    <div class="author-card">
-        <img src="{{ author.display_photo }}" alt="{{ author.name }}" class="author-photo">
-        <h2>{{ author.name }}</h2>
-        <p>
-            Born on {{ author.birth_date|date:"j F, Y" }} 
-            in {{ author.get_birth_country_display }}. {{ author.biography|safe }}
-        </p>
+<div class="container pb-4">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">Meet Our Authors</h1>
+
+    <!-- Authors -->
+    <div class="row g-4">
+        {% for author in authors %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card border-0 shadow-sm text-center p-3 h-100">
+                <!-- Author photo -->
+                <img src="{{ author.display_photo }}" 
+                     alt="{{ author.name }}" 
+                     class="author-photo img-fluid mx-auto mb-3">
+
+                <!-- Author name -->
+                <h3 class="author-name pb-2">{{ author.name }}</h3>
+
+                <!-- Author biography -->
+                <div class="author-bio">{{ author.biography|safe }}</div>
+
+                <!-- Author details -->
+                <p class="author-birth-details">
+                    Born on {{ author.birth_date|date:"j F, Y" }} in {{ author.get_birth_country_display }}.
+                </p>
+            </div>
+        </div>
+        {% empty %}
+        <!-- No authors message -->
+        <div class="col-12">
+            <p class="text-center">No authors found.</p>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}

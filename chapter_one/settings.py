@@ -89,7 +89,7 @@ DJRICHTEXTFIELD_CONFIG = {
         'width': '100%',
         'height': 300,
         'menubar': False,
-        'resize': False,
+        'resize': True,
         'forced_root_block': 'p',
         'block_formats': ';'.join([
             'Paragraph=p',
@@ -103,6 +103,13 @@ DJRICHTEXTFIELD_CONFIG = {
         'statusbar': False,
         'elementpath': False,
         'visualblocks_default_state': True,
+
+        'paste_as_text': True,
+        'paste_auto_cleanup_on_paste': True,
+        'paste_remove_styles': True,
+        'paste_remove_styles_if_webkit': True,
+        'paste_strip_class_attributes': True,
+        'valid_elements': 'p,h2,h3,h4,h5,strong,em,ul,ol,li,br'
     }
 }
 
