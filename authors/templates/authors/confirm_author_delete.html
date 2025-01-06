@@ -6,17 +6,29 @@ Confirm Delete
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2 class="text-danger text-center">Confirm Deletion</h2>
-    <p class="text-center">
+<div class="container">
+    <!-- Page title -->
+    <h1 class="text-center mb-4 text-danger">Confirm Deletion</h1>
+
+    <!-- Confirmation message -->
+    <p class="text-center fs-5">
         Are you sure you want to delete <strong>{{ author.name }}</strong>?
     </p>
-    <p class="text-center text-muted">
+    <p class="text-center text-muted mb-4">
         This action cannot be undone. All data related to this author will be permanently deleted.
     </p>
-    <div class="d-flex justify-content-center gap-3">
-        <a href="{% url 'manage_authors' %}" class="btn btn-secondary">Cancel</a>
-        <a href="{% url 'delete_author' author.id %}" class="btn btn-danger">Delete</a>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-center flex-wrap gap-3">
+        <!-- Cancel button -->
+        <a href="{% url 'manage_authors' %}" class="btn-chapter-one btn-small">
+            <i class="fa-solid fa-ban"></i> Cancel
+        </a>
+
+        <!-- Delete button -->
+        <a href="{% url 'delete_author' author.id %}" class="btn-chapter-one btn-small btn-red">
+            <i class="fa-solid fa-trash"></i> Delete
+        </a>
     </div>
 </div>
 {% endblock %}
