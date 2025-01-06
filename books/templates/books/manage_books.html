@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block extra_title %}
@@ -7,41 +6,67 @@ Manage Books
 {% endblock %}
 
 {% block content %}
-    <h2>Manage Books</h2>
-    <div class="container">
-        <table class="table">
-            <thead>
+<div class="container pb-5">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">Manage Books</h1>
+
+    <!-- Table -->
+    <div class="table-responsive shadow-sm rounded bg-white">
+        <table class="table table-hover align-middle">
+            <!-- Table header -->
+            <thead class="table-dark">
                 <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col" class="text-end">Actions</th>
                 </tr>
-                <tbody>
-                    <tr>
-                        <td><p>-</p></td>
-                        <td><p>-</p></td>
-                        <td>
-                            <a href="{% url 'add_book' %}" class="btn btn-sm btn-success">Add Book</a>
-                        </td>
-                    </tr>
-                    {% for book in books %}
-                    <tr>
-                        <td>{{ book.title }}</td>
-                        <td>{{ book.author }}</td>
-                        <td>
-                            <!-- Edit Button -->
-                            <a href="{% url 'edit_book' book.slug %}" class="btn btn-sm btn-secondary">
-                                Edit
-                            </a>
-                            <!-- Delete Button -->
-                            <a href="{% url 'confirm_delete_book' book.id %}" class="btn btn-sm btn-danger ms-2">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
             </thead>
+
+            <!-- Table body -->
+            <tbody>
+                <!-- Add book button -->
+                <tr>
+                    <td colspan="2" class="text-start">
+                        <a href="{% url 'add_book' %}" class="btn-chapter-one btn-small btn-green">
+                            <i class="fa-solid fa-plus"></i> Add Book
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Book list -->
+                {% for book in books %}
+                <tr>
+                    <!-- Book title -->
+                    <td>{{ book.title }}</td>
+                    
+                    <!-- Author name -->
+                    <td>{{ book.author }}</td>
+
+                    <!-- Actions -->
+                    <td>
+                        <div class="d-flex justify-content-end flex-wrap gap-2 table-btn-container">
+                            <!-- Edit button -->
+                            <a href="{% url 'edit_book' book.slug %}" class="btn-chapter-one btn-small">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                            </a>
+                    
+                            <!-- Delete button -->
+                            <a href="{% url 'confirm_delete_book' book.id %}" 
+                               class="btn-chapter-one btn-small btn-red">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <!-- No books message -->
+                <tr>
+                    <td colspan="3" class="text-center py-4">No books found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
+</div>
 {% endblock %}
