@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block extra_title %}
@@ -7,38 +6,62 @@ Manage Authors
 {% endblock %}
 
 {% block content %}
-    <h2>Manage Authors</h2>
-    <div class="container">
-        <table class="table">
-            <thead>
+<div class="container">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">Manage Authors</h1>
+
+    <!-- Table -->
+    <div class="table-responsive shadow-sm rounded bg-white">
+        <table class="table table-hover align-middle">
+            <!-- Table header -->
+            <thead class="table-dark">
                 <tr>
-                    <th>Author</th>
-                    <th></th>
+                    <th scope="col">Author</th>
+                    <th scope="col" class="text-end">Actions</th>
                 </tr>
-                <tbody>
-                    <tr>
-                        <td><p>-</p></td>
-                        <td>
-                            <a href="{% url 'add_author' %}" class="btn btn-sm btn-success">Add Author</a>
-                        </td>
-                    </tr>
-                    {% for author in authors %}
-                    <tr>
-                        <td>{{ author.name }}</td>
-                        <td>
-                            <!-- Edit Button -->
-                            <a href="{% url 'edit_author' author.id %}" class="btn btn-sm btn-secondary">
-                                Edit
-                            </a>
-                            <!-- Delete Button -->
-                            <a href="{% url 'confirm_delete_author' author.id %}" class="btn btn-sm btn-danger ms-2">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
             </thead>
+
+            <!-- Table body -->
+            <tbody>
+                <!-- Add author button -->
+                <tr>
+                    <td class="text-start">
+                        <a href="{% url 'add_author' %}" class="btn-chapter-one btn-small btn-green">
+                            <i class="fa-solid fa-plus"></i> Add Author
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <!-- Author list -->
+                {% for author in authors %}
+                <tr>
+                    <!-- Author name -->
+                    <td>{{ author.name }}</td>
+
+                    <td>
+                        <div class="d-flex justify-content-end flex-wrap gap-2 table-btn-container">
+                            <!-- Edit button -->
+                            <a href="{% url 'edit_author' author.id %}" class="btn-chapter-one btn-small">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                            </a>
+                    
+                            <!-- Delete button -->
+                            <a href="{% url 'confirm_delete_author' author.id %}" 
+                               class="btn-chapter-one btn-small btn-red">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <!-- No authors message -->
+                <tr>
+                    <td colspan="2" class="text-center py-4">No authors found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
+</div>
 {% endblock %}

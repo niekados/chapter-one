@@ -155,6 +155,49 @@ span.decorative {
 
 }
 
+.btn-small {
+    
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
+    line-height: 1.2;
+}
+
+.btn-red {
+    background: #e8174fc1;
+}
+
+.btn-green {
+    background: #60a34d9a;
+}
+
+/* Tables */
+.table-responsive {
+    border: 1px solid var(--smoky-black);
+    border-radius: 8px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(23, 19, 16, 0.05);
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.table td:last-child {
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+.table-dark th {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
 /* Toasts */
 .toast-container {
     z-index: 9999999;
@@ -259,21 +302,30 @@ footer {
 
 /* Media Queries */
 
+/* Extra small screens */
+@media screen and (max-width: 576px) {
+    .table-btn-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 /* Tablets and larger (768px and larger) */
 @media screen and (min-width: 768px) {
     .navbar-brand {
         font-size: 1.5em;
     }
+
 }
 
 /* Laptops and larger (992px and larger) */
 @media screen and (min-width: 992px) {
-    
+    .navbar-brand {
+        font-size: 1.9em;
+    }
 }
 
 /* Desktops and larger (1200px and larger) */
 @media screen and (min-width: 1200px) {
-    .navbar-brand {
-        font-size: 1.9em;
-    }
+    
 }
