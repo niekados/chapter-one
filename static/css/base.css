@@ -256,6 +256,61 @@ span.decorative {
     font-style: italic;
 }
 
+/* Shopping cart */
+.cart-table th,
+.cart-table td {
+    vertical-align: middle;
+}
+
+/* Book title column */
+.cart-table td:first-child {
+    width: 55%;
+}
+
+/* Price column */
+.cart-table td:nth-child(2) {
+    width: 25%;
+    text-align: center;
+}
+
+/* Actions column */
+.cart-table td:last-child {
+    width: 20%;
+    text-align: end;
+}
+
+/* Total row styling */
+.cart-table tfoot td {
+    font-weight: 700;
+}
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cart-book-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--smoky-black);
+}
+
+.cart-book-link:hover {
+    text-decoration: underline;
+}
+
+.cart-book-author {
+    font-style: italic;
+    color: #6c757d;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 3rem 0;
+}
+
 /* Form: TinyMCE Rich Text Editor */
 .tox.tox-tinymce {
     border: var(--smoky-black) 1px solid;

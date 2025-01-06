@@ -6,61 +6,89 @@ Shopping Cart
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2>Shopping Cart</h2>
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
+<div class="container pb-5">
+    <h1 class="text-center mb-4">Shopping Cart</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
             {% if cart_items %}
-            <div class="table-responsive rounded">
-                <table class="table">
-                    <thead>
+            <!-- Cart table -->
+            <div class="table-responsive bg-white">
+                <table class="table table-hover align-middle cart-table">
+                    <!-- Table header -->
+                    <thead class="table-dark">
                         <tr>
                             <th scope="col">Book</th>
-                            <th scope="col">Price</th>
-                            <th scope="col"></th>
+                            <th scope="col" class="text-center">Price</th>
+                            <th scope="col" class="text-end"></th>
                         </tr>
                     </thead>
-                    {% for item in cart_items %}
+
+                    <!-- Table body -->
+                    <tbody>
+                        {% for item in cart_items %}
                         <tr>
-                            <td><a href="{% url 'book_detail' item.book.slug %}">{{ item.book.title }}</a> by {{ item.book.author }}</td>
-                        
-                       <td>€ {{ item.book.price }}</td>
-                       <!-- Remove book -->
-                       <td><a href="{% url 'remove_from_cart' item.book.id %}">Remove</a></td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td>Total: </td>
-                        <td><h6>€ {{ total|floatformat:2 }}</h6></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><a href="{% url 'books_list' %}" class="btn btn-outline-dark btn-lg">More books</a></td>
-                        <td>
-                            {% if request.user.is_authenticated %}
-                            <a href="{% url 'checkout' %}" class="btn btn-outline-dark btn-lg">Checkout</a>
-                            {% else %}
-                            <p><strong>Please <a href="{% url 'account_login' %}">login</a> to checkout</strong></p>
-                        {% endif %}
-                        </td>
-                        <td></td>
-                    </tr>
+                            <!-- Book title -->
+                            <td class="cart-book-title">
+                                <a href="{% url 'book_detail' item.book.slug %}" class="cart-book-link">
+                                    {{ item.book.title }}
+                                </a>
+                                <span class="cart-book-author"> by {{ item.book.author }}</span>
+                            </td>
+
+                            <!-- Book price -->
+                            <td class="text-center cart-price">
+                                € {{ item.book.price }}
+                            </td>
+
+                            <!-- Remove book -->
+                            <td class="text-end cart-actions">
+                                <a href="{% url 'remove_from_cart' item.book.id %}" 
+                                   class="btn-chapter-one btn-small btn-red">
+                                    <i class="fa-solid fa-trash"></i> Remove
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                        <!-- Total row -->
+                        <tr>
+                            <td class="fw-bold">Total:</td>
+                            <td class="text-center fw-bold">€ {{ total|floatformat:2 }}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
+
+            <div class="d-flex justify-content-between flex-wrap mt-4 gap-3 cart-buttons">
+                <!-- More books button -->
+                <a href="{% url 'books_list' %}" class="btn-chapter-one">
+                    <i class="fa-solid fa-book"></i> More Books
+                </a>
+
+                <!-- Checkout button -->
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'checkout' %}" class="btn-chapter-one">
+                    <i class="fa-solid fa-credit-card"></i> Checkout
+                </a>
+                {% else %}
+                <p class="mb-0 fw-bold text-center w-100">
+                    Please <a href="{% url 'account_login' %}">login</a> to checkout.
+                </p>
+                {% endif %}
+            </div>
+
             {% else %}
-            <p class="lead mb">Your cart is empty</p>
-            <a href="{% url 'books_list' %}" class="btn btn-outline-dark btn-lg">
-                <span class="icon"><i class="fas fa-circle-chevron-left"></i> Back to Books</span>
-            </a>
+            <!-- Empty cart -->
+            <div class="text-center py-5 empty-cart"> 
+                <p class="lead mb-4">Your cart is empty.</p>
+                <a href="{% url 'books_list' %}" class="btn-chapter-one">
+                    <i class="fa-solid fa-circle-chevron-left"></i> Back to Books
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>
 </div>
-
 {% endblock %}
