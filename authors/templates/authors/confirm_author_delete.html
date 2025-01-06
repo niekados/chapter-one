@@ -21,12 +21,12 @@ Confirm Delete
     <!-- Buttons -->
     <div class="d-flex justify-content-center flex-wrap gap-3">
         <!-- Cancel button -->
-        <a href="{% url 'manage_authors' %}" class="btn-chapter-one btn-small">
+        <a href="{% url 'manage_authors' %}" class="btn-chapter-one">
             <i class="fa-solid fa-ban"></i> Cancel
         </a>
 
         <!-- Delete button -->
-        <a href="{% url 'delete_author' author.id %}" class="btn-chapter-one btn-small btn-red">
+        <a href="{% url 'delete_author' author.id %}" class="btn-chapter-one btn-red">
             <i class="fa-solid fa-trash"></i> Delete
         </a>
     </div>
