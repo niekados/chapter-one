@@ -2,21 +2,34 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Confirm Access" %}{% endblock head_title %}
+{% block extra_title %}
+    {% trans "Confirm Access" %}
+{% endblock %}
 
 {% block inner_content %}
+<div class="text-center">
 
-<h1>{% trans "Confirm Access" %}</h1>
+    <h1 class="mb-4">{% trans "Confirm Access" %}</h1>
 
-<p>{% blocktranslate %}To safeguard the security of your account, please enter your password:{% endblocktranslate %}</p>
+    <p class="mb-4">
+        {% blocktranslate %}To safeguard the security of your account, please enter your password:{% endblocktranslate %}
+    </p>
 
-<form class="reauthenticate" method="POST" action="{% url 'account_reauthenticate' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Confirm" %}</button>
-</form>
+    <form method="POST" action="{% url 'account_reauthenticate' %}" class="form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
 
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <a href="{% url 'books_list' %}" class="btn-chapter-one">
+                {% trans "Back" %}
+            </a>
+            <button type="submit" class="btn-chapter-one btn-green">
+                {% trans "Confirm" %}
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock inner_content %}

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block extra_title %}
@@ -21,7 +21,7 @@ Order Confirmation
                 <div class="card-body p-4">
                     <!-- Email notification -->
                     <p class="text-center">
-                        An order confirmation email has been sent to 
+                        An order confirmation email has been sent to
                         <strong>{{ order.email }}</strong>.
                     </p>
 
@@ -51,15 +51,18 @@ Order Confirmation
                         <table class="table table-borderless align-middle">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Author</th>
+                                    <th scope="col" class="w-60">Title</th>
+                                    <th scope="col" class="w-30">Author</th>
+                                    <th scope="col" class="w-10 text-end">Price</th>
                                 </tr>
                             </thead>
+                            <!-- Table body -->
                             <tbody>
                                 {% for item in order.lineitems.all %}
                                 <tr>
-                                    <td>{{ item.book.title }}</td>
-                                    <td>{{ item.book.author }}</td>
+                                    <td class="w-60">{{ item.book.title }}</td>
+                                    <td class="w-30">{{ item.book.author }}</td>
+                                    <td class="w-10 text-end">€ {{ item.book.price }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
