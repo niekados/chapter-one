@@ -11,16 +11,6 @@
   transition: box-shadow 150ms ease;
 }
 
-.StripeElement--focus,
-.stripe-style-input:focus,
-.stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-
 .stripe-style-input::placeholder {
     color: #aab7c4;
 }
@@ -46,7 +36,6 @@ select option[value=""] {
 }
 
 legend {
-  font-family: var(--primary-font);
   font-size: 1.1rem;
 }
 

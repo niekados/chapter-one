@@ -34,17 +34,21 @@ Home
     </div>
 </section>
 
-  <!-- Get published form -->
-  <section class="col-12 col-md-8 col-lg-6 my-4">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-  </section>
+  <!-- Contact form -->
+  <section class="my-5 container">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <!-- Form -->
+    <form method="POST" class="contact-form mx-auto col-12 col-md-8 col-lg-7 " style="max-width: 600px;">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <!-- Submit button -->
+        <div class="text-center mt-3">
+            <button type="submit" class="btn-chapter-one">
+                <i class="fa-solid fa-paper-plane"></i> Send
+            </button>
+        </div>
+    </form>
+</section>
 
 </div>
 {% endblock %}

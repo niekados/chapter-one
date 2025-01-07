@@ -227,6 +227,14 @@ span.decorative {
     font-size: 1.4em;
 }
 
+.contact-form #id_subject,
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid var(--smoky-black);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
 /* Authors */
 .author-photo {
     width: 120px;
