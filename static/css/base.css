@@ -548,6 +548,10 @@ footer {
     font-size: 1.2em;
 }
 
+.privacy-link {
+    font-style: italic;
+}
+
 .privacy-link:hover {
     color: #1877F2;
     text-decoration: underline;
