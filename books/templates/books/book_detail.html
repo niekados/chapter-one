@@ -3,51 +3,70 @@
 {% load static %}
 
 {% block extra_title %}
-Books
+{{ book.title }}
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'books_list' %}" class="btn btn-outline-dark">Back to books</a>
-<div class="container">
-    <h1 class="text-center">{{ book.title }}</h1>
-    <div class="row">
+<div class="container pb-5">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">{{ book.title }}</h1>
 
-        <div class="col-3 mb-4">
-            <!-- Book div -->
-            <div class="card p-3 text-center shadow-sm">
-                <h3 class="book-title">
-                    {{ book.title }}
-                </h3>
-                <p class="book-author">
-                    {{ book.author.name }}
-                </p>
-                <p>
-                    {{ book.description }}
-                </p>
-                <p>
-                    {{ book.price }}
-                </p>
-                <p>{{ book.genre }}</p>
+    <!-- Book detail section -->
+    <div class="row justify-content-center">
+        <!-- Book cover -->
+        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center">
+            <div class="book-card-wrapper text-center">
+                <!-- Book cover -->
+                <div class="book-card no-hover {{ book.genre.name }}">
+                    <h3 class="book-title">{{ book.title }}</h3>
+                    <p class="book-author">{{ book.author.name }}</p>
+                </div>
+                <hr>
+                <!-- Genre badge -->
+                <span class="genre-badge {{ book.genre.name }}">{{ book.genre.friendly_name }}</span>
+            </div>
+        </div>
+
+        <!-- Book details -->
+        <div class="col-12 col-md-8 col-lg-6 mt-4">
+            <!-- Description -->
+            <h4 class="mb-3">Description</h4>
+            <p class="mb-4">{{ book.description }}</p>
+
+            {% if not user_owns_book %}
+            <!-- Price -->
+            <h4 class="mb-3">Price: €{{ book.price }}</h4>
+            {% endif %}
+
+            <!-- Buttons -->
+            <div class="d-flex flex-wrap gap-3">
+                <!-- Back to books button -->
+                <a href="{% url 'books_list' %}" class="btn-chapter-one">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Books
+                </a>
                 {% if user_owns_book %}
-                <h4>
-                    <a href="{% url 'download_book' book.id %}" download class="btn btn-primary">
-                        Download Book
-                    </a>
-                </h4>
-            {% else %}
+                <!-- Download button -->
+                <a href="{% url 'download_book' book.id %}" download class="btn-chapter-one">
+                    <i class="fa-solid fa-download"></i> Download
+                </a>
+                {% else %}
+                <!-- Add to cart form -->
                 <form class="form" action="{% url 'add_to_cart' book.id %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
-
                     {% if book_in_cart %}
-                        <button type="button" class="btn btn-secondary rounded-0 text-uppercase mt-3" disabled>
-                            In Cart
-                        </button>
+                    <!-- In Cart button -->
+                    <button type="button" class="btn-chapter-one bg-secondary text-white" disabled>
+                        <i class="fa-solid fa-cart-shopping"></i> In Cart
+                    </button>
                     {% else %}
-                        <input type="submit" class="btn btn-primary rounded-0 text-uppercase mt-3" value="Add to Cart">
+                    <!-- Add to cart button -->
+                    <button type="submit" class="btn-chapter-one">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
                     {% endif %}
                 </form>
-            {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
