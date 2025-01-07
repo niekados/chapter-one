@@ -12,7 +12,7 @@ def my_library(request):
     library_entries = LibraryEntry.objects.filter(user=request.user)
 
     # Pagination
-    paginator = Paginator(library_entries, 6)
+    paginator = Paginator(library_entries, 8)
     page = request.GET.get('page')
     library_entries = paginator.get_page(page)
 
