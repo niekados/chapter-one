@@ -256,7 +256,25 @@ span.decorative {
 
 /* Books */
 
-/* Book card wrapper */
+.filter-dropdown {
+    border: 1px solid var(--smoky-black);
+    border-radius: 4px;
+}
+
+.no-books-message {
+    font-size: 1.5rem;
+}
+
+.filter-sort-container {
+    border: 1px solid var(--smoky-black);
+    border-radius: 8px;
+    background-color: var(--white);
+}
+
+.filter-sort-container p {
+    font-size: 1.3rem;
+}
+
 .book-card-wrapper {
     border: 1px solid var(--smoky-black);
     border-radius: 8px;
@@ -267,7 +285,6 @@ span.decorative {
     min-width: 220px;
 }
 
-/* Book hover effect */
 .book-card-wrapper:hover {
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
@@ -321,7 +338,6 @@ span.decorative {
     margin-top: 0.5rem;
 }
 
-/* Genre badge */
 .genre-badge {
     border: 1px solid var(--smoky-black);
     background-color: var(--dun);

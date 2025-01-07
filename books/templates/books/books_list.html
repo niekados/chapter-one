@@ -7,136 +7,126 @@ Books
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="text-center">Books</h1>
+<div class="container pb-5">
+    <!-- Page title -->
+    <h1 class="text-center mb-4">Books</h1>
 
-    <!-- Sort or search book count -->
-    <p class="text-muted">
-        {% if search_keyword or current_genre %}
-        {{ books.paginator.count }} book{% if books.paginator.count != 1 %}s{% endif %} found
-        {% else %}
-        Showing all {{ books.paginator.count }} books
-        {% endif %}
-    </p>
+    <!-- Filters, sort, and book count -->
+    <div class="filter-sort-container p-3 mb-4">
+        <!-- Book count -->
+        <p class="mb-3">
+            {% if search_keyword or current_genre %}
+            {{ books.paginator.count }} book{% if books.paginator.count != 1 %}s{% endif %} found
+            {% else %}
+            Showing all {{ books.paginator.count }} books
+            {% endif %}
+        </p>
 
-    <!-- Display currently selected genre -->
-    <div class="mb-3">
-        {% if current_genre %}
-        <span class="badge bg-secondary">Genre: {{ current_genre }}</span>
-        {% endif %}
-        {% if search_keyword %}
-        <span class="badge bg-secondary">Search: {{ search_keyword }}</span>
-        {% endif %}
+        <div class="d-flex flex-wrap gap-3">
+            <!-- Filter by genre -->
+            <form method="GET" action="{% url 'books_list' %}">
+                {% if search_keyword %}
+                <input type="hidden" name="q" value="{{ search_keyword }}">
+                {% endif %}
+                <select name="genre" class="form-select filter-dropdown" onchange="this.form.submit()">
+                    <option value="">All Genres</option>
+                    {% for genre in genres %}
+                    <option value="{{ genre.name }}" {% if genre.name == current_genre %}selected{% endif %}>
+                        {{ genre.friendly_name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            <!-- Sort by options -->
+            <form method="GET" action="{% url 'books_list' %}">
+                {% if search_keyword %}
+                <input type="hidden" name="q" value="{{ search_keyword }}">
+                {% endif %}
+                {% if current_genre %}
+                <input type="hidden" name="genre" value="{{ current_genre }}">
+                {% endif %}
+                <select name="sort" class="form-select filter-dropdown" onchange="this.form.submit()">
+                    <option value="latest_desc" {% if current_sorting == 'latest_desc' %}selected{% endif %}>
+                        Latest Books
+                    </option>
+                    <option value="title_asc" {% if current_sorting == 'title_asc' %}selected{% endif %}>
+                        Title A-Z
+                    </option>
+                    <option value="title_desc" {% if current_sorting == 'title_desc' %}selected{% endif %}>
+                        Title Z-A
+                    </option>
+                    <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>
+                        Price ↑
+                    </option>
+                    <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>
+                        Price ↓
+                    </option>
+                </select>
+            </form>
+
+            <!-- Clear filters -->
+            {% if search_keyword or current_genre or current_sorting != 'latest_desc' %}
+            <a href="{% url 'books_list' %}" class="btn-chapter-one">
+                Clear Filters
+            </a>
+            {% endif %}
+        </div>
     </div>
 
-    <section class="container d-flex">
-        <h2>Filter:</h2>
-        <!-- Filter by genre -->
-        <form method="GET" action="{% url 'books_list' %}">
-            {% if search_keyword %}
-            <input type="hidden" name="q" value="{{ search_keyword }}">
-            {% endif %}
-            <select name="genre" class="form-select" onchange="this.form.submit()">
-                <option value="">All Genres</option>
-                {% for genre in genres %}
-                <option value="{{ genre.name }}" {% if genre.name == current_genre %}selected{% endif %}>
-                    {{ genre.friendly_name }}
-                </option>
-                {% endfor %}
-            </select>
-        </form>
-
-        <!-- Sort by title or price -->
-        <form method="GET" action="{% url 'books_list' %}">
-            {% if search_keyword %}
-            <input type="hidden" name="q" value="{{ search_keyword }}">
-            {% endif %}
-            {% if current_genre %}
-            <input type="hidden" name="genre" value="{{ current_genre }}">
-            {% endif %}
-            <select name="sort" class="form-select" onchange="this.form.submit()">
-                <option value="latest_desc" {% if current_sorting == 'latest_desc' %}selected{% endif %}>
-                    Latest Books
-                </option>
-                <option value="title_asc" {% if current_sorting == 'title_asc' %}selected{% endif %}>
-                    Title A-Z
-                </option>
-                <option value="title_desc" {% if current_sorting == 'title_desc' %}selected{% endif %}>
-                    Title Z-A
-                </option>
-                <option value="author_asc" {% if current_sorting == 'author_asc' %}selected{% endif %}>
-                    Author A-Z
-                </option>
-                <option value="author_desc" {% if current_sorting == 'author_desc' %}selected{% endif %}>
-                    Author Z-A
-                </option>
-                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>
-                    Price ↑
-                </option>
-                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>
-                    Price ↓
-                </option>
-            </select>
-        </form>
-        {% if search_keyword or current_genre or current_sorting != 'latest_desc' %}
-        <span class="small"><a href="{% url 'books_list' %}"></span>
-        Clear all filters
-        </a>
-        {% endif %}
-    </section>
-
+    <!-- Book grid -->
     <div class="row g-4 justify-content-center pb-4 pt-4">
         {% for book in books %}
-        <div class="col-12 col-md-5 col-lg-3 d-flex justify-content-center">
-            <!-- Book Card Wrapper -->
+        <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
+            <!-- Book card wrapper -->
             <div class="book-card-wrapper text-center">
-                <!-- Book Cover -->
+                <!-- Book cover -->
                 <a href="{% url 'book_detail' book.slug %}" class="text-decoration-none text-dark">
                     <div class="book-card {{ book.genre.name }}">
                         <h3 class="book-title">{{ book.title }}</h3>
                         <p class="book-author">{{ book.author.name }}</p>
                     </div>
                 </a>
-                <!-- Price and Genre -->
+                <!-- Price and genre -->
                 <p class="book-price mt-3">€{{ book.price }}</p>
                 <span class="genre-badge {{ book.genre.name }}">{{ book.genre.friendly_name }}</span>
             </div>
         </div>
         {% empty %}
-        <p class="text-center">No books available at the moment.</p>
+        <!-- No books message -->
+        <div class="text-center py-5">
+            <p class="no-books-message">No books available at the moment.</p>
+        </div>
         {% endfor %}
     </div>
+
+    <!-- Pagination -->
+    {% if books.has_other_pages %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if books.has_previous %}
+            <li class="page-item">
+                <a class="page-link text-dark border border-black" href="?page={{ books.previous_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.genre %}&genre={{ request.GET.genre }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                    Previous
+                </a>
+            </li>
+            {% endif %}
+
+            <li class="page-item">
+                <span class="page-link text-dark border border-black">
+                    Page {{ books.number }} of {{ books.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if books.has_next %}
+            <li class="page-item">
+                <a class="page-link text-dark border border-black" href="?page={{ books.next_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.genre %}&genre={{ request.GET.genre }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                    Next
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
-
-<!-- Pagination -->
-{% if books.has_other_pages %}
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center text">
-        {% if books.has_previous %}
-        <li class="page-item">
-            <a class="page-link"
-                href="?page={{ books.previous_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.genre %}&genre={{ request.GET.genre }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
-                Previous
-            </a>
-        </li>
-        {% endif %}
-
-        <li class="page-item">
-            <span class="page-link">
-                Page {{ books.number }} of {{ books.paginator.num_pages }}
-            </span>
-        </li>
-
-        {% if books.has_next %}
-        <li class="page-item">
-            <a class="page-link"
-                href="?page={{ books.next_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.genre %}&genre={{ request.GET.genre }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
-                Next
-            </a>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
-{% endif %}
-
 {% endblock %}
