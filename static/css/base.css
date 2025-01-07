@@ -254,7 +254,130 @@ span.decorative {
     font-style: italic;
 }
 
+/* Books */
+
+/* Book card wrapper */
+.book-card-wrapper {
+    border: 1px solid var(--smoky-black);
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+    min-width: 220px;
+}
+
+/* Book hover effect */
+.book-card-wrapper:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Book Cover */
+.book-card {
+    position: relative;
+    width: 150px;
+    height: 220px;
+    background-color: var(--white);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid #c7c7c7;
+    border-left: none;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Spine Effect */
+.book-card::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to right, #c7c7c7, #fffefdc3 50%);
+    border-radius: 4px 0 0 4px;
+}
+
+/* Hover effect for book cover */
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styling */
+.book-title {
+    font-family: var(--deco-font);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* Author styling */
+.book-author {
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Genre badge */
+.genre-badge {
+    border: 1px solid var(--smoky-black);
+    background-color: var(--dun);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* Price styling */
+.book-price {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+/* Genre colors */
+.crime {
+    background-color: #F9D3D3;
+}
+
+.fairy_tales {
+    background-color: #EADFF2;
+}
+
+.fantasy {
+    background-color: #E7E1F5;
+}
+
+.fiction {
+    background-color: #D4F4F4;
+}
+
+.horror {
+    background-color: #D9D9D9;
+}
+
+.mystery {
+    background-color: #D8E9F3;
+}
+
+.poetry {
+    background-color: #FDE3E3;
+}
+
+.romance {
+    background-color: #FFE5D9;
+}
+
+.science_fiction {
+    background-color: #f1f48e;
+}
+
 /* Shopping cart */
+
+/* Cart header */
 .cart-table th,
 .cart-table td {
     vertical-align: middle;
@@ -445,5 +568,8 @@ footer {
 
 /* Desktops and larger (1200px and larger) */
 @media screen and (min-width: 1200px) {
-    
+    main, header.container-fluid {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
 }

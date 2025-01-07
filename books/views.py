@@ -69,7 +69,7 @@ def all_books(request):
     current_sorting = request.GET.get('sort', 'latest_desc')
 
     # Pagination
-    paginator = Paginator(books, 6)
+    paginator = Paginator(books, 8)
     page = request.GET.get('page')
     books = paginator.get_page(page)
 
