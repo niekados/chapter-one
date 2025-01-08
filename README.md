@@ -11,7 +11,7 @@
 - [Project Inception](#project-inception) 
 - [Customer Goals](#customer-goals) 
 - [Business Goals](#business-goals)
-X - [User Stories](#user-stories)
+- [User Stories](#user-stories)
 - [Strategy](#strategy)
 - [Scope](#scope)
 - [Structure](#structure)
@@ -25,8 +25,6 @@ X - [User Stories](#user-stories)
 - [Database Schema](#database-schema)
   - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Agile](#agile)
-  - [MoSCoW Prioritization](#moscow-prioritization)
-  - [Sprints](#sprints)
 - [Marketing](#marketing)
 - [Deploying Project to Heroku](#deploying-project-to-heroku)
 
@@ -75,6 +73,61 @@ The mission of **Chapter One** is to bridge the gap between emerging authors and
 - **Encourage Reader Engagement**: Create an enjoyable, simple shopping experience that attracts readers interested in unique stories, fostering loyalty and frequent returns to the platform.
 
 - **Build Brand Recognition**: Grow **Chapter One**'s reputation as the go-to place for discovering undiscovered writers, leveraging social media, Mailchimp newsletters, and community outreach to attract both authors and readers.
+
+## **User Stories**
+
+### **Visitor User Stories**
+
+- **As a visitor**, I can view the site’s home page so that I can understand its purpose and intentions.  
+- **As a visitor**, I can use the navigation bar to explore different sections of the site so that I can easily access the content I need.  
+- **As a visitor**, I can click on links in the footer so that I can access additional information, such as the privacy policy and social media links.  
+- **As a visitor**, I can enter text into the search bar so that I can quickly find books.
+- **As a visitor**, I can view a list of all available books so that I can browse through them.  
+- **As a visitor**, I can filter books by genre so that I can easily find books that match my interests.  
+- **As a visitor**, I can view detailed information about a book so that I can make an informed purchase decision.
+
+---
+
+## **User Authentication User Stories**
+
+- **As a user**, I can register for an account so that I can access personalized features like purchasing books and managing my library.  
+- **As a user**, I can log in to my account so that I can access my profile and purchased books.  
+- **As a user**, I can log out of my account so that I can prevent unauthorised access. 
+- **As a user**, I can edit my profile details so that I can keep my personal and billing information up to date.  
+
+---
+
+## **Shopping Cart and Checkout User Stories**
+
+- **As a user**, I can add books to my cart so that I can purchase items.  
+- **As a user**, I can view the contents of my cart so that I can see which books I plan to purchase and their total cost.  
+- **As a user**, I can remove books from my cart so that I can adjust my selections before checkout.  
+- **As a user**, I can complete my purchase using a secure payment method so that I can download my books immediately.  
+- **As a user**, I can receive a confirmation email after completing a purchase so that I have a record of my order details.  
+
+---
+
+## **User Library User Stories**
+
+- **As a user**, I can view my purchased books in a library so that I can keep track of my collection.  
+- **As a user**, I can download my purchased books so that I can read them.  
+
+---
+
+## **Author Profiles User Stories**
+
+- **As a user**, I can view a list of all authors on a dedicated page so that I can explore their profiles. 
+
+---
+
+## **Admin Content Management User Stories**
+
+- **As an admin**, I can add new books to the catalog so that they are available for users to browse and purchase.  
+- **As an admin**, I can edit existing books so that I can update their details or pricing when needed.  
+- **As an admin**, I can delete books from the catalog so that I can remove outdated or incorrect listings.  
+- **As an admin**, I can add new authors so that I can feature them in the catalog and link their books.  
+- **As an admin**, I can edit author profiles so that I can update their information.  
+- **As an admin**, I can delete authors so that I can remove profiles if needed.    
 
 ## Strategy
 
