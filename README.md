@@ -4,7 +4,7 @@
 
 "Chapter One" is an online bookstore designed to support emerging authors by providing them with a platform to share their work. Focused on selling affordable, digital PDF books, Chapter One aims to connect readers with fresh voices in literature, offering them a unique way to support new authors at the start of their writing journey. With a minimalist design, integrated Stripe payments, and Mailchimp newsletters, Chapter One fosters an accessible environment for both authors and readers passionate about discovering new stories.
 
-**[Link to the deployed application]()**
+**[Link to the deployed application](https://chapter-one-6f5e3972cc2a.herokuapp.com/books/)**
 
 ## Index
 
@@ -20,11 +20,10 @@ X - [User Stories](#user-stories)
 - [Surface](#surface)
     - [Fonts](#fonts)
     - [Colours](#colours)
-- [Security](#security)
 - [Features](#features)
 - [Future Features](#future-features)
 - [Database Schema](#database-schema)
-  -[Entity Relationship Diagram](#entity-relationship-diagram)
+  - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Agile](#agile)
   - [MoSCoW Prioritization](#moscow-prioritization)
   - [Sprints](#sprints)
@@ -216,9 +215,43 @@ To enhance readability, colour contrasts meet accessibility standards:
 - **Smoky Black on Dun**: With a contrast ratio of 12.15, this combination ensures easy reading against the background.
 - **Smoky Black on White**: A ratio of 18.47, making it ideal for navbar and interactive elements.
 
+## Database Schema 
+
+### Entity Relationship Diagram
+
+<img src="documentation/images/erd.png" alt="Erd" style="width:90%;">
+
+## Agile
+
+The *Chapter One* project was developed using the **Agile methodology** to stay organized and make steady progress through iterative development.  
+
+### **Approach**  
+I started by creating **Epic Stories** to outline the main features and goals of the project. Each epic was then broken down into **User Stories** with **Acceptance Criteria** and **Tasks** to define clear expectations and the steps required to complete them.  
+
+### **Prioritization**  
+To prioritize features, I used the **MoSCoW method**:  
+- **Must Have** – Essential features required for the project to function.  
+- **Should Have** – Important features that improve the user experience but are not critical.  
+- **Could Have** – Optional features to include if time permits.  
+- **Won't Have** – Features excluded from the current scope but considered for future updates.  
+
+### **Project Board**  
+I added **User Stories** as **GitHub Issues** and organized them into **Sprints** to plan and track development. Each sprint focused on delivering specific features.  
+
+The project board was divided into columns to reflect task progress:  
+- **Backlog** – Planned work waiting to be started.  
+- **To-Do** – Tasks prioritized for the current sprint.  
+- **In Progress** – Tasks currently being worked on.  
+- **Done** – Completed tasks.  
+
+### **Tracking Progress**  
+For a detailed view of the full development process, including sprints, issues, and task status, visit the **GitHub Project Board**:  
+[Chapter One Project Board](https://github.com/users/niekados/projects/7)
+
 ## Credits
 
 ### **Images**
+
 - **Author Placeholder Image**:  
   The placeholder image for authors without a profile photo was sourced from the [Avatar Placeholder website](https://avatar-placeholder.iran.liara.run/). This image is provided for free use.
 
