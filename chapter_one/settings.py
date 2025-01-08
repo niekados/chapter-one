@@ -33,7 +33,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-niekados-chapterone-122scir0etc.ws.codeinstitute-ide.net',
-    '.herokuapp.com'
+    '.herokuapp.com', 'chapter-one-6f5e3972cc2a.herokuapp.com',
     ]
 
 # Application definition
