@@ -295,11 +295,45 @@ The project board was divided into columns to reflect task progress:
 For a detailed view of the full development process, including sprints, issues, and task status, visit the **GitHub Project Board**:  
 [Chapter One Project Board](https://github.com/users/niekados/projects/7)
 
+## Marketing
+
+Marketing for *Chapter One* focuses on building a strong online presence and keeping users engaged through social media and email marketing. The goal is to attract readers and encourage them to return to the site, explore books, and support new authors.
+
+### Facebook Business Page  
+A [Facebook Business Page](https://www.facebook.com/people/Chapter-One/61571407364696/) was created for *Chapter One* to connect with readers and promote new books and authors.  
+
+- The profile features a **logo** as the profile image and a **bookshelf background** for the cover photo to match the literary theme.  
+- A **Call-to-Action button** was added to the page, allowing visitors to explore the store quickly.  
+- Regular posts will share updates about new book releases, author spotlights, and promotions to keep followers engaged.  
+- The page also provides links to the website and encourages interaction through comments, shares, and likes.
+
+### Email Marketing with Mailchimp  
+Email newsletters are used to capture user attention and encourage them to revisit the site.  
+
+- **Mailchimp** was set up for managing newsletter subscriptions and sending updates about new books, featured authors, and special offers.  
+- A **subscribe form** was added to the footer of the website, inviting visitors to join the mailing list.   
+- Subscribers receive well-designed emails using Mailchimp templates, reinforcing the branding of *Chapter One*.
+
+### SEO Improvements  
+Search Engine Optimization (SEO) was implemented to improve visibility and make the site easier to find through search engines.
+
+- **Meta Tags** were added to the site’s base template, including:
+  - **Keywords** to describe the site’s content (e.g., books, new authors, short stories).  
+  - **Description** to highlight the site's purpose and attract interest in search results.  
+  - **Author** tag.  
+
+- **robots.txt** file was created to guide search engine crawlers and prevent indexing of private pages.  
+- **sitemap.xml** was generated using [XML Sitemaps](https://www.xml-sitemaps.com/) to help search engines index the site structure efficiently.  
+
+### Privacy Policy  
+A **Privacy Policy** link was added to the footer, ensuring transparency about data collection and usage.  
+
+- The policy was generated using [Privacy Policy Generator](https://www.privacypolicygenerator.info/).  
+- It complies with basic privacy standards, reassuring visitors about their data security when subscribing to newsletters or making purchases.
+
 ## Deployment
 
 The *Chapter One* project was developed using **GitPod** with **Git** version control and stored in a **GitHub repository**. GitHub also served as the connection point for deploying the project to **Heroku**.
-
----
 
 ### Database
 
