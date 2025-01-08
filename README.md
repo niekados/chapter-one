@@ -27,15 +27,11 @@
 - [Agile](#agile)
 - [Marketing](#marketing)
 - [Deploying Project to Heroku](#deploying-project-to-heroku)
-
-
-  - [Google Mail Setup](#google-mail-setup)
-  - [AWS Config](#aws-config)
-    - [Media Folder Setup](#media-folder-setup)
-    - [Django AWS Connect](#django-aws-connect)
-  - [Stripe Config](#stripe-config)
-
-  
+- [Gmail Setup](#gmail-setup)
+- [AWS Config](#aws-config)
+  - [Media Folder Setup](#media-folder-setup)
+  - [Django AWS Connect](#django-aws-connect)
+- [Stripe Config](#stripe-config)
 - [Technologies Used](#technologies-used)
 - [Credits](#credits)
 - [Testing](#testing)
@@ -300,6 +296,90 @@ The project board was divided into columns to reflect task progress:
 ### **Tracking Progress**  
 For a detailed view of the full development process, including sprints, issues, and task status, visit the **GitHub Project Board**:  
 [Chapter One Project Board](https://github.com/users/niekados/projects/7)
+
+## Deployment
+
+The *Chapter One* project was developed using **GitPod** with **Git** version control and stored in a **GitHub repository**. GitHub also served as the connection point for deploying the project to **Heroku**.
+
+---
+
+### Database
+
+The project uses **PostgreSQL** as its database, hosted by **Code Institute** using their **PostgreSQL database tool**:  
+[Code Institute Database](https://dbs.ci-dbs.net/)
+
+### Prepare the project for deployment:
+1. Install required packages `dj_database_url` and `psycopg2`.
+2. Add database URL and secret key to environment variables.
+3. Update settings.py:
+	-	Import the `dj_database_url` package.
+	-	Replace the default SQLite database with PostgreSQL using:
+    ```bash
+    DATABASES = {
+      'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+    ```
+4. Install `gunicorn`
+5. Create Procfile in the root directory and add the following line: `web: gunicorn chapter_one.wsgi:application`.
+
+### Heroku Deployment
+1. Log in to Heroku.
+2. Click New → Create New App:
+  -	App Name: Enter a unique name for the app.
+	-	Region: Select Europe for deployment location.
+3. Set Config Vars:
+  - Navigate to the Settings tab in Heroku and add the following Config Vars:
+    -	SECRET_KEY – The Django secret key.
+    -	DATABASE_URL – Code Institute PostgreSQL database.
+    -	DISABLE_COLLECTSTATIC – Temporarily set to 1 during initial deployment.
+4. Go to the Deploy tab in Heroku.
+5. Select GitHub as the Deployment Method.
+6. Connect to your repository by searching for the project name.
+7. Deploy the branch manually by clicking Deploy Branch. (Optional: Enable Automatic Deploys.)
+8. At the end of the project, the following Config Vars will be added in Heroku:
+  - `SECRET_KEY` - Used for securely signing in to Django.  
+  - `DATABASE_URL` - Connection URL for the PostgreSQL database.  
+  - `AWS_ACCESS_KEY_ID` - Access key ID for AWS S3 storage.  
+  - `AWS_SECRET_ACCESS_KEY` - Secret access key for AWS S3 storage.  
+  - `STRIPE_PUBLIC_KEY` - Public key for Stripe payment.  
+  - `STRIPE_SECRET_KEY` - Secret key for Stripe payment.  
+  - `STRIPE_WH_SECRET` - Webhook secret key for Stripe.  
+  - `EMAIL_HOST_USER` - Email address used to send automated emails.  
+  - `EMAIL_HOST_PASS` - Password for the email host.  
+  - `USE_AWS` - Flag to enable AWS S3 storage for media and static files. 
+
+## Gmail Setup
+
+The *Chapter One* project uses **Gmail SMTP** for sending emails, such as purchase confirmations and user contact forms. To securely send emails, the following steps were taken:
+
+---
+
+### Gmail Account Setup
+1. Log in to an existing Gmail account or create a new one specifically for the project.  
+2. Enable **2-Step Verification** in the account’s security settings.  
+3. In the Gmail settings search bar, type **"App Passwords"** and follow the steps to create a new **16-digit app password**.   
+4. Copy the generated password for later use.
+
+---
+
+### Configure Email Settings in Django
+Add the following email configurations to `settings.py`:
+```python
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'chapterone@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+```
+Store sensitive information in environment variables:
+- `EMAIL_HOST_USER=youremail@gmail.com`
+- `EMAIL_HOST_PASS=your-gmail-app-password`
 
 ## Credits
 
