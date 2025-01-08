@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /profile/
+Disallow: /library/
+Sitemap: https://chapter-one-6f5e3972cc2a.herokuapp.com/sitemap.xml
