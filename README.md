@@ -28,10 +28,8 @@
 - [Marketing](#marketing)
 - [Deploying Project to Heroku](#deploying-project-to-heroku)
 - [Gmail Setup](#gmail-setup)
-- [AWS Config](#aws-config)
-  - [Media Folder Setup](#media-folder-setup)
-  - [Django AWS Connect](#django-aws-connect)
-- [Stripe Config](#stripe-config)
+- [AWS Setup](#aws-setup)
+- [Stripe Setup](#stripe-setup)
 - [Technologies Used](#technologies-used)
 - [Credits](#credits)
 - [Testing](#testing)
@@ -380,6 +378,152 @@ else:
 Store sensitive information in environment variables:
 - `EMAIL_HOST_USER=youremail@gmail.com`
 - `EMAIL_HOST_PASS=your-gmail-app-password`
+
+## AWS Setup
+
+The Chapter One project uses **AWS S3** for storing static and media files.
+
+### Create an AWS Account
+1. Register or log in to an existing account at [AWS](https://aws.amazon.com).  
+2. Once logged in, search for S3 in the AWS Management Console.  
+3. Select S3 from the services list.
+
+### Create an S3 Bucket
+1. Click Create bucket.  
+2. Enter a Bucket Name — it is recommended to match this with your Heroku app name.  
+3. Choose a Region closest to your location.  
+4. Object Ownership:
+   - Select ACLs enabled.  
+   - Choose Bucket owner preferred.  
+5. Block Public Access:
+6. Deselect Block all public access. 
+7. Leave other settings as default and click Create Bucket.
+
+### Enable Static Website Hosting
+1. Go to the Properties tab in your bucket.  
+2. Scroll to Static website hosting and click Edit.  
+3. Enable static hosting and specify:
+   - Index Document: `index.html`  
+   - Error Document: `error.html`  
+4. Save changes.
+
+### Update Permissions
+
+### CORS Configuration
+1. Go to the Permissions tab.  
+2. Scroll down to Cross-Origin Resource Sharing (CORS) and click Edit.  
+3. Add the following code and save:
+   ```json
+   [
+     {
+       "AllowedHeaders": ["Authorization"],
+       "AllowedMethods": ["GET"],
+       "AllowedOrigins": ["*"],
+       "ExposeHeaders": []
+     }
+   ]
+   ```
+
+### Bucket Policy
+1. Go to the Permissions tab in your bucket settings.  
+2. Scroll to Bucket Policy and click Edit.  
+3. Use the Policy Generator to create a policy:  
+   - Policy Type: S3 Bucket Policy  
+   - Principal: "*" (to allow public access)  
+   - Action: s3:GetObject  
+   - Resource: Copy and paste your bucket ARN and append /* to the end.  
+4. Click Generate Policy, then copy and paste the generated policy code.  
+5. Save changes.
+
+### Access Control List (ACL)
+1. Scroll down to Access Control List (ACL) in the bucket settings and click Edit.  
+2. Under Everyone (public access), enable List.  
+3. Confirm the changes by acknowledging the warning and click Save.
+
+### Create IAM User and Access Keys  
+1. Search for IAM in the AWS Management Console.  
+2. Go to User Groups and create a new group.  
+3. Attach the AmazonS3FullAccess policy to the group.  
+
+#### Create Policy for Bucket  
+1. Go to Policies and click Create Policy.  
+2. Use the JSON tab and add the following:  
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Statement1",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name",
+        "arn:aws:s3:::your-bucket-name/*"
+      ]
+    }
+  ]
+}
+```
+3. Save the policy and attach it to the group.
+
+#### Create a User
+1.	Go to Users and click Create User.
+2.	Assign the user to the previously created group.
+3.	Complete the setup and create an Access Key:
+-	Select an Application running outside AWS.
+-	Download the key .csv file, which contains:
+-	AWS_ACCESS_KEY_ID
+-	AWS_SECRET_ACCESS_KEY
+
+### Configure Django Settings
+
+1. Install required packages: `boto3` `django-storages`.
+2. Update settings.py:
+```bash
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLS in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
+
+## Stripe Setup
+
+The Chapter One project uses **Stripe** for payment processing in a **test environment**. The following steps outline how to retrieve API keys, set up webhooks, and test payments.
+
+### 1. Retrieve API Keys
+1. Log in to [Stripe](https://stripe.com/) or create a free account.  
+2. The **Publishable Key** and **Secret Key** are displayed directly on the **Dashboard**.  
+3. Copy the keys and add them as environment variables:
+  - `STRIPE_PUBLIC_KEY=`
+  - `STRIPE_SECRET_KEY=`
+
+### 2. Create a Webhook Endpoint
+1. Go to the **Developers** tab (expand the black bar at the bottom-left of the screen if collapsed).  
+2. Select **Webhooks** and click **Add Endpoint**.  
+3. Enter the webhook URL (e.g., `https://your-app-name.herokuapp.com/checkout/webhook/`).  
+4. Select **All Events** to capture all relevant webhook events.  
+5. Click **Add Endpoint**.  
+6. After saving, copy the **Webhook Secret Key** and add it as an environment variable:
+  - `STRIPE_WH_SECRET=`
+
+### 3. Test Card Numbers
+Stripe provides test card numbers to simulate different payment scenarios:
+- `4242 4242 4242 4242` - Successful Payment
+- `4000 0025 0000 3155` - Requires 3D Secure
+- Expiry date - any future date
+- CVC - any 3 numbers
 
 ## Credits
 
