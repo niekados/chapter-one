@@ -573,6 +573,24 @@ footer {
     color: rgba(23,19,16, 0.7);
 }
 
+/* MailChimp */
+#mc_embed_signup div.response {
+    margin: 0;
+    padding: .2em 0;
+}
+
+#mc_embed_signup h2 {
+    margin: 0;
+}
+
+#mc_embed_signup .mc-field-group {
+    padding-bottom: 1%;
+}
+
+#mce-EMAIL {
+    max-width: 300px;
+}
+
 /* Media Queries */
 
 /* Extra small screens */
