@@ -80,16 +80,12 @@ The mission of **Chapter One** is to bridge the gap between emerging authors and
 - **As a visitor**, I can filter books by genre so that I can easily find books that match my interests.  
 - **As a visitor**, I can view detailed information about a book so that I can make an informed purchase decision.
 
----
-
 ## **User Authentication User Stories**
 
 - **As a user**, I can register for an account so that I can access personalized features like purchasing books and managing my library.  
 - **As a user**, I can log in to my account so that I can access my profile and purchased books.  
 - **As a user**, I can log out of my account so that I can prevent unauthorised access. 
 - **As a user**, I can edit my profile details so that I can keep my personal and billing information up to date.  
-
----
 
 ## **Shopping Cart and Checkout User Stories**
 
@@ -99,20 +95,14 @@ The mission of **Chapter One** is to bridge the gap between emerging authors and
 - **As a user**, I can complete my purchase using a secure payment method so that I can download my books immediately.  
 - **As a user**, I can receive a confirmation email after completing a purchase so that I have a record of my order details.  
 
----
-
 ## **User Library User Stories**
 
 - **As a user**, I can view my purchased books in a library so that I can keep track of my collection.  
 - **As a user**, I can download my purchased books so that I can read them.  
 
----
-
 ## **Author Profiles User Stories**
 
 - **As a user**, I can view a list of all authors on a dedicated page so that I can explore their profiles. 
-
----
 
 ## **Admin Content Management User Stories**
 
@@ -700,3 +690,5 @@ The *Chapter One* project was built using a combination of languages, frameworks
 - **Author Avatars**:  
   Author avatar images used throughout the project were downloaded as a free package from [Untitled UI Avatars](https://www.untitledui.com/avatars). These images are licensed for free commercial use.
 
+## Testing 
+[Please follow this link for TESTING.md](TESTING.md)
