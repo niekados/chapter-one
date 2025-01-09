@@ -342,4 +342,34 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 
 ## Bugs
 
+The following issues were encountered during development and resolved:
+
+1. Upload to Method Error 
+   - **Problem**: The `upload_to` method caused errors due to missing instance and invalid UUID slicing.  
+   - **Solution**: Added the instance parameter to the `upload_to` method and converted `uuid4` to a string before slicing.
+
+2. Stripe Postcode Mismatch
+   - **Problem**: A mismatch between the postal code captured by the Stripe card element and the postal code entered in the checkout form caused order lookup failures in the webhook handler, leading to duplicate orders.  
+   - **Solution**: Removed the postal code field from the Stripe card element and validated it through the form instead.
+
+3. 500 Internal Server Error  
+   - **Problem**: A 500 internal server error occurred due to an incorrect URL tag in a template (`{% url 'books' %}`).  
+   - **Solution**: Updated the template to use the correct URL tag (`{% url 'books_list' %}`).
+
+4. Additional Paragraph Issue in the About Us Section 
+   - **Problem**: The `djrichtextfield` library added an extra paragraph tag in the About Us section.  
+   - **Solution**: Removed the paragraph tag to resolve the issue. 
+
 ## Known Bugs
+
+1. **Incorrect Error Handling for Unauthorized Book Downloads**  
+   - If a user tries to download a book using a copied URL without authorization, the download is restricted, but the error message is displayed as plain text on a blank page instead of a user-friendly message.
+
+2. **Unrefactored Code**  
+   - Some sections of the code were planned for refactoring to improve readability but remain unrefactored.
+
+3. **Mailchimp Subscription Form Styling**  
+   - The Mailchimp subscription form in the footer lacks proper styling to align with the overall site design.
+
+### Note:
+I ran out of time to fix these issues due to the submission deadline. While I would have preferred to resolve everything, I focused on completing the main parts of the project and documentation before the deadline.

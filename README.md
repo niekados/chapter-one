@@ -398,6 +398,9 @@ Email newsletters are used to capture user attention and encourage them to revis
 - A **subscribe form** was added to the footer of the website, inviting visitors to join the mailing list.   
 - Subscribers receive well-designed emails using Mailchimp templates, reinforcing the branding of *Chapter One*.
 
+<img src="documentation/screenshots/mailchimp-home.png" alt="MailChimp home" style="width:60%;">
+<img src="documentation/screenshots/mailchimp-audience.png" alt="MailChimp Audience" style="width:60%;">
+
 ### SEO Improvements  
 Search Engine Optimization (SEO) was implemented to improve visibility and make the site easier to find through search engines.
 
