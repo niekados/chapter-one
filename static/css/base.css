@@ -346,6 +346,7 @@ span.decorative {
     font-size: 1.2rem;
     font-weight: 700;
     margin-top: 10px;
+    word-wrap: break-word;
 }
 
 /* Author styling */
@@ -353,6 +354,7 @@ span.decorative {
     font-size: 1rem;
     font-style: italic;
     margin-top: 0.5rem;
+    word-wrap: break-word;
 }
 
 .genre-badge {
