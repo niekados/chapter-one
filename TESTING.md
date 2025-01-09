@@ -23,11 +23,54 @@ The HTML code for the Journey app was validated using the [W3C Markup Validation
   - URI validation was employed for all pages that did not require user login.
   - Direct input validation was used for pages that required a login. The HTML code was extracted by viewing the page's source directly. 
 
+#### Warnings:
+- The `type` attribute is unnecessary for JavaScript resources. This warning appeared multiple times in the code but was left unchanged as it is not critical and does not impact functionality.
 
+| Page                 | Warnings                          | Errors                         |
+|----------------------|-----------------------------------|--------------------------------|
+| index                | JS type attribute                 | None                           |
+| add author           | JS type attribute                 | None                           |
+| authors list         | JS type attribute                 | None                           |
+| confirm author delete | JS type attribute                 | None                           |
+| edit author          | JS type attribute                 | None                           |
+| manage authors       | JS type attribute                 | None                           |
+| add book             | JS type attribute                 | None                           |
+| book detail          | JS type attribute                 | None                           |
+| books list           | JS type attribute                 | None                           |
+| confirm book delete  | JS type attribute                 | None                           |
+| edit book            | JS type attribute                 | None                           |
+| manage books         | JS type attribute                 | None                           |
+| shopping cart        | JS type attribute                 | None                           |
+| checkout             | JS type att, empty heading        | None                           |
+| checkout success     | JS type attribute                 | None                           |
+| my library           | JS type attribute                 | None                           |
+| profile              | JS type attribute                 | None                           |
+| sign in              | JS type attribute                 | None                           |
+| sign out             | JS type attribute                 | None                           |
+| sign up              | JS type attribute                 | None                           |
 
 ### CSS Validation
 
+The CSS files were validated using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) with the **Direct Input** method.
+
+#### Validation Results
+
+| CSS File       | Warnings                        | Errors                          |
+|----------------|---------------------------------|---------------------------------|
+| base.css       | None                            | None                            |
+| checkout.css   | None                            | None                            |
+| profiles.css   | None                            | None                            |
+
 ### JavaScript Validation
+
+The JavaScript files were validated using the [Esprima JavaScript Validator](https://esprima.org/demo/validate.html).
+
+#### Validation Results
+
+| JavaScript File          | Warnings                         | Errors                          |
+|--------------------------|----------------------------------|---------------------------------|
+| elements.js              | None                             | None                            |
+| base.html script section | None                             | None                            |
 
 ### PEP8 Validation
 
