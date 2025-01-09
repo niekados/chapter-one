@@ -292,7 +292,7 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 | Test                                           | Expected Result                                                        | Fail/Pass |
 |------------------------------------------------|------------------------------------------------------------------------|-----------|
 | Load the homepage                              | The Homepage loads with the hero section, navigation, and footer displayed.|  Pass     |
-| Click "Books" button                           | Redirects to the Books page.                                           |  Pass     |
+| Click "Books" button                           | Opens the Books page.                                           |  Pass     |
 | Submit the contact form without input          | Displays validation errors.                                            |  Pass     |
 | Submit the contact form with valid input       | Form submits successfully.                                             |  Pass     |
 | Click navigation links                         | Redirects to the corresponding pages.                                  |  Pass     |
@@ -311,7 +311,7 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 | Submit checkout form with valid details        | Redirects to the Checkout Success page and sends a confirmation email. |  Pass     |
 | Simulate payment using test card               | Payment is processed successfully.                                     |  Pass     |
 | Load the Checkout Success page                 | Displays order confirmation details.                                   |  Pass     |
-| Check email for confirmation                   | Email contains order details and download links.                       |  Pass     |
+| Check email for confirmation                   | Email contains order details and purchased books list.                 |  Pass     |
 | Load the My Library page                       | Displays a list of purchased books with download buttons.              |  Pass     |
 | Click the "Download" button                    | Book downloads successfully in PDF format.                             |  Pass     |
 | Register a new user                            | User account is created, and a success message is displayed.           |  Pass     |
@@ -344,7 +344,7 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 
 The following issues were encountered during development and resolved:
 
-1. Upload to Method Error 
+1. `upload_to` Method Error 
    - **Problem**: The `upload_to` method caused errors due to missing `instance` and invalid UUID slicing.  
    - **Solution**: Added the `instance` parameter to the `upload_to` method and converted `uuid4` to a string before slicing.
 

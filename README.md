@@ -471,15 +471,11 @@ The project uses **PostgreSQL** as its database, hosted by **Code Institute** us
 
 The *Chapter One* project uses **Gmail SMTP** for sending emails, such as purchase confirmations and user contact forms. To securely send emails, the following steps were taken:
 
----
-
 ### Gmail Account Setup
 1. Log in to an existing Gmail account or create a new one specifically for the project.  
 2. Enable **2-Step Verification** in the account’s security settings.  
 3. In the Gmail settings search bar, type **"App Passwords"** and follow the steps to create a new **16-digit app password**.   
 4. Copy the generated password for later use.
-
----
 
 ### Configure Email Settings in Django
 Add the following email configurations to `settings.py`:
@@ -517,8 +513,8 @@ The Chapter One project uses **AWS S3** for storing static and media files.
    - Select ACLs enabled.  
    - Choose Bucket owner preferred.  
 5. Block Public Access:
-6. Deselect Block all public access. 
-7. Leave other settings as default and click Create Bucket.
+   - Deselect Block all public access. 
+6. Leave other settings as default and click Create Bucket.
 
 ### Enable Static Website Hosting
 1. Go to the Properties tab in your bucket.  
@@ -633,7 +629,7 @@ The Chapter One project uses **Stripe** for payment processing in a **test envir
 ### 2. Create a Webhook Endpoint
 1. Go to the **Developers** tab (expand the black bar at the bottom-left of the screen if collapsed).  
 2. Select **Webhooks** and click **Add Endpoint**.  
-3. Enter the webhook URL (e.g., `https://your-app-name.herokuapp.com/checkout/webhook/`).  
+3. Enter the webhook URL (e.g., `https://your-app-name.herokuapp.com/checkout/wh/`).  
 4. Select **All Events** to capture all relevant webhook events.  
 5. Click **Add Endpoint**.  
 6. After saving, copy the **Webhook Secret Key** and add it as an environment variable:
@@ -657,7 +653,7 @@ The *Chapter One* project was built using a combination of languages, frameworks
 - **Python** – For backend logic and server-side scripting.  
 
 ### Frameworks and Tools
-- **Django** – Python framework for building the backend and database models.  
+- **Django** – A high-level Python web framework that encourages rapid development.  
 - **Git** – Version control system for tracking changes.  
 - **GitHub** – Repository hosting for storing code and enabling deployment.  
 - **GitPod** – Online IDE used for development.  
