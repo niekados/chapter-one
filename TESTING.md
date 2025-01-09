@@ -261,7 +261,7 @@ The Lighthouse tool by Google was used to evaluate website performance, accessib
 
 ### **Admin Content Management User Stories**
 
-- **As an admin**, I can add new books to the catalog so that they are available for users to browse and purchase.
+- **As an admin**, I can add new books to the catalogue so that they are available for users to browse and purchase.
 
 <img src="documentation/screenshots/add-book.png" alt="Add Book" style="width:50%;">
 
@@ -269,11 +269,11 @@ The Lighthouse tool by Google was used to evaluate website performance, accessib
 
 <img src="documentation/screenshots/edit-book.png" alt="Edit Book" style="width:50%;"> 
 
-- **As an admin**, I can delete books from the catalog so that I can remove outdated or incorrect listings. 
+- **As an admin**, I can delete books from the catalogue so that I can remove outdated or incorrect listings. 
 
 <img src="documentation/screenshots/confirm-book-delete.png" alt="Delete Book" style="width:50%;">
 
-- **As an admin**, I can add new authors so that I can feature them in the catalog and link their books. 
+- **As an admin**, I can add new authors so that I can feature them in the catalogue and link their books. 
 
 <img src="documentation/screenshots/add-author.png" alt="Add Author" style="width:50%;">
 
@@ -301,12 +301,12 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 | Use the search bar                             | Displays matching results or "No books found."                         |  Pass     |
 | Filter books by genre                          | Displays only books within the selected genre.                         |  Pass     |
 | Click on a book to view details                | Redirects to the Book Detail page.                                     |  Pass     |
-| Click the "Add to Cart" button                 | Adds the book to the cart and updates the cart icon count.             |  Pass     |
+| Click the "Add to Cart" button                 | Add the book to the cart and update the cart icon count.               |  Pass     |
 | Verify the "In Cart" button                    | Button changes to "In Cart" if the book is already in the cart.        |  Pass     |
 | Verify the "Download" button                   | The Button changes to "Download" if the book is owned.                 |  Pass     |
 | Load the Cart page                             | Displays books in the cart with title and total cost.                  |  Pass     |
 | Remove a book from the cart                    | Book is removed, and the total is updated.                             |  Pass     |
-| Click the "Checkout" button                    | Redirects to the Checkout page.                                        |  Pass     |
+| Click the "Checkout" button                    | Redirect to the Checkout page.                                         |  Pass     |
 | Submit checkout form without input             | Displays validation errors.                                            |  Pass     |
 | Submit checkout form with valid details        | Redirects to the Checkout Success page and sends a confirmation email. |  Pass     |
 | Simulate payment using test card               | Payment is processed successfully.                                     |  Pass     |
@@ -318,11 +318,11 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 | Log in with valid credentials                  | Redirects to the Home page.                                            |  Pass     |
 | Log out and confirm the action                 | User is logged out and redirected to the homepage.                     |  Pass     |
 | Edit profile details                           | Updates are saved, and a success message is displayed.                 |  Pass     |
-| Add a new book via the admin panel             | Book is added successfully and appears on the Books page.              |  Pass     |
-| Edit a book via the admin panel                | Changes are saved and reflected on the Books page.                     |  Pass     |
-| Delete a book via the admin panel              | Book is removed from the Books page.                                   |  Pass     |
+| Add a new book.                                | The book is added successfully and appears on the Books page.          |  Pass     |
+| Edit a book.                                   | Changes are saved and reflected on the Books page.                     |  Pass     |
+| Delete a book.                                 | Book is removed from the Books page.                                   |  Pass     |
 | Add, edit, or delete an author                 | Changes are reflected on the Authors page.                             |  Pass     |
-| Click the Privacy Policy link                  | Redirects to the Privacy Policy page.                                  |  Pass     |
+| Click the Privacy Policy link                  | Redirect to the Privacy Policy page.                                   |  Pass     |
 | Submit the newsletter subscription form        | Displays a success message.                                            |  Pass     |
 | Visit a non-existent page (404 error)          | Displays a custom 404 error page with a link to return to the homepage.|  Pass     |
 | Simulate a server error (500 error)            | Displays a custom 500 error page with a link to return to the homepage.|  Pass     |
@@ -332,7 +332,7 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 | Check form validations for Edit Author         | Displays validation errors for missing or invalid fields.              |  Pass     |
 | Try deleting an author with linked books       | Deletion is blocked, and an error message is displayed.                |  Pass     |
 | Try deleting an author without linked books    | The Author is deleted successfully.                                    |  Pass     |
-| Try downloading using copied URL while signed out | Access is denied.                                                   |  Pass     |
+| Try downloading using the copied URL while signed out | Access is denied.                                               |  Pass     |
 | Try manually entering Checkout without signing in | Access is denied, and the user is redirected to the login page.     |  Pass     |
 | Try manually entering Library without signing in | Access is denied, and the user is redirected to the login page.      |  Pass     |
 | Test logo link                                 | Clicking the logo redirects to the homepage.                           |  Pass     |
@@ -345,8 +345,8 @@ The responsiveness of the website was tested using **Google Chrome DevTools** an
 The following issues were encountered during development and resolved:
 
 1. Upload to Method Error 
-   - **Problem**: The `upload_to` method caused errors due to missing instance and invalid UUID slicing.  
-   - **Solution**: Added the instance parameter to the `upload_to` method and converted `uuid4` to a string before slicing.
+   - **Problem**: The `upload_to` method caused errors due to missing `instance` and invalid UUID slicing.  
+   - **Solution**: Added the `instance` parameter to the `upload_to` method and converted `uuid4` to a string before slicing.
 
 2. Stripe Postcode Mismatch
    - **Problem**: A mismatch between the postal code captured by the Stripe card element and the postal code entered in the checkout form caused order lookup failures in the webhook handler, leading to duplicate orders.  

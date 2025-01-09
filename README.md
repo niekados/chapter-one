@@ -106,16 +106,16 @@ The mission of **Chapter One** is to bridge the gap between emerging authors and
 
 ## **Admin Content Management User Stories**
 
-- **As an admin**, I can add new books to the catalog so that they are available for users to browse and purchase.  
+- **As an admin**, I can add new books to the catalogue so that they are available for users to browse and purchase.  
 - **As an admin**, I can edit existing books so that I can update their details or pricing when needed.  
-- **As an admin**, I can delete books from the catalog so that I can remove outdated or incorrect listings.  
-- **As an admin**, I can add new authors so that I can feature them in the catalog and link their books.  
+- **As an admin**, I can delete books from the catalogue so that I can remove outdated or incorrect listings.  
+- **As an admin**, I can add new authors so that I can feature them in the catalogue and link their books.  
 - **As an admin**, I can edit author profiles so that I can update their information.  
 - **As an admin**, I can delete authors so that I can remove profiles if needed.    
 
 ## Strategy
 
-The strategy for **Chapter One** focuses on creating a welcoming platform where emerging authors can reach readers who are interested in discovering fresh literary talents. Key strategic points are centered on platform simplicity, user engagement, and long-term growth.
+The strategy for **Chapter One** focuses on creating a welcoming platform where emerging authors can reach readers who are interested in discovering fresh literary talents. Key strategic points are centred on platform simplicity, user engagement, and long-term growth.
 
 ### Strategic Objectives
 
@@ -134,7 +134,7 @@ The strategy for **Chapter One** focuses on creating a welcoming platform where 
 The *Chapter One* project aims to create a simple online bookstore specialising in digital books by new authors. The website focuses on core features essential for smooth user experience and book purchasing, keeping the website accessible and minimal.
 
 - **Book Browsing and Search**:
-  - Users can explore a catalog of books, listed with author names, book titles, and genres.
+  - Users can explore a catalogue of books, listed with author names, book titles, and genres.
   - A simple search bar to look up books.
   - Genre-based filtering for quick access to books by categories, such as comedy, short stories, and poetry.
 
@@ -242,7 +242,7 @@ To enhance the literary feel, three fonts were selected:
 
 To capture the nostalgic ambience of an aged book, I took inspiration from a real, well-worn volume. By photographing the book pages and extracting colours with a colour picker, I recreated the subtle tones of the old book:
 
-- **Smoky Black (#171310)**: Smoky Black is the main text colour, combining readability and warmth. It echoes the look of printed ink on old book page.
+- **Smoky Black (#171310)**: Smoky Black is the main text colour, combining readability and warmth. It echoes the look of printed ink on an old book page.
 - **Dun (#DED0B7)**: The background colour, Dun, is reminiscent of well-loved, yellowed paper. This gentle tone provides a comfortable reading experience.
 - **White (#FFFFFF)**: Used in the navbar, buttons, and other key elements, white provides a modern touch. It stands out against the Dun background and adds a clean contrast that draws attention without overpowering the classic tones.
 
@@ -300,7 +300,7 @@ To enhance readability, colour contrasts meet accessibility standards:
 ### **Shopping Cart**
 - **Add to Cart** – Users can add books to their shopping cart for purchase.  
 - **View Cart** – Displays all items in the cart, including their total cost.  
-- **Remove Button** – Users can remove books from their cart if they change their mind. 
+- **Remove Button** – Users can remove books from their cart if they change their minds. 
 <img src="documentation/screenshots/shopping-cart.png" alt="Shopping Cart" style="width:50%;"> 
 
 ### **Checkout**
@@ -324,7 +324,7 @@ To enhance readability, colour contrasts meet accessibility standards:
 <img src="documentation/screenshots/authors-list.png" alt="Authors" style="width:50%;">   
 
 ### **Admin Features**
-- **Manage Books** – Admins can add, edit, and delete books from the catalog. 
+- **Manage Books** – Admins can add, edit, and delete books from the catalogue. 
 
 <img src="documentation/screenshots/manage-books.png" alt="Manage Books" style="width:50%;">
 
@@ -566,7 +566,7 @@ The Chapter One project uses **AWS S3** for storing static and media files.
 2. Go to User Groups and create a new group.  
 3. Attach the AmazonS3FullAccess policy to the group.  
 
-#### Create Policy for Bucket  
+#### Create a Policy for Bucket  
 1. Go to Policies and click Create Policy.  
 2. Use the JSON tab and add the following:  
 ```json
