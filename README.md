@@ -262,6 +262,88 @@ To enhance readability, colour contrasts meet accessibility standards:
 - **Smoky Black on Dun**: With a contrast ratio of 12.15, this combination ensures easy reading against the background.
 - **Smoky Black on White**: A ratio of 18.47, making it ideal for navbar and interactive elements.
 
+## Features
+
+### **General Features**
+- **Responsive Design** – The website is fully responsive and adapts to different screen sizes, including mobile, tablet, and desktop.  
+- **Navigation Bar** – The navigation bar allows users to access all major sections of the site, including Home, Books, My Library, Profile, Admin and Cart.
+<img src="documentation/screenshots/navbar.png" alt="Navbar" style="width:50%;">
+
+- **Footer** – Includes links to the Privacy Policy, social media, and the newsletter subscription form.
+<img src="documentation/screenshots/footer.png" alt="Footer" style="width:50%;">
+
+### **Home Page**
+- **Literary quote & About Us** – Displays a welcoming literary quote and an overview of the project’s mission to support new authors. 
+<img src="documentation/screenshots/quote.png" alt="Quote" style="width:50%;"> 
+<img src="documentation/screenshots/about-us.png" alt="About Us" style="width:50%;">
+
+- **Call-to-Action Button** – Encourages users to browse books or learn more about the project.  
+- **Contact Form** – Allows authors to inquire about publishing opportunities.  
+<img src="documentation/screenshots/contact-us.png" alt="Contact Us" style="width:50%;">
+
+### **User Authentication**
+- **Register and Login** – Users can create an account or log in to access personalized features.
+<img src="documentation/screenshots/sign-in.png" alt="Sign In" style="width:50%;">
+<img src="documentation/screenshots/sign-up.png" alt="Sign Up" style="width:50%;"> 
+
+- **Logout Confirmation** – A confirmation page ensures users don’t accidentally log out.  
+<img src="documentation/screenshots/sign-out.png" alt="Sign Out" style="width:50%;">
+
+- **Profile Management** – Users can update their personal details and billing information.  
+<img src="documentation/screenshots/my-profile.png" alt="Profile" style="width:50%;">
+
+### **Books Page**
+- **Browse Books** – Displays a list of all available books, including the title, author, genre, and price. 
+<img src="documentation/screenshots/books.png" alt="Books" style="width:50%;">
+
+- **Search Functionality** – Users can search for books. 
+
+<img src="documentation/screenshots/navbar.png" alt="Search Bar" style="width:50%;">
+
+- **Genre Filtering** – Users can filter books by genre for easier browsing. 
+- **Book Detail Page** –  Provides detailed information about a book, including a description and a dynamic button that displays “Add to Cart,” “In Cart,” or “Download,” depending on the user’s actions.
+
+<img src="documentation/screenshots/book-details.png" alt="Book Detail" style="width:50%;">
+<img src="documentation/screenshots/add-to-cart-button.png" alt="Add Button" style="width:50%;">
+<img src="documentation/screenshots/download-button.png" alt="Download" style="width:50%;">
+
+### **Shopping Cart**
+- **Add to Cart** – Users can add books to their shopping cart for purchase.  
+- **View Cart** – Displays all items in the cart, including their total cost.  
+- **Remove Button** – Users can remove books from their cart if they change their mind. 
+<img src="documentation/screenshots/shopping-cart.png" alt="Shopping Cart" style="width:50%;"> 
+
+### **Checkout**
+- **Secure Payment** – Integration with Stripe allows users to securely purchase books.  
+<img src="documentation/screenshots/check-out.png" alt="Checkout" style="width:50%;">
+
+- **Order Confirmation** – Users receive an email confirmation after completing a purchase.  
+
+### **My Library**
+- **View Purchased Books** – Displays all books the user has purchased in their library. 
+<img src="documentation/screenshots/my-library.png" alt="My Library" style="width:50%;">
+
+- **Download Books** – Users can download their purchased books in PDF format.  
+- **Owned Books Indicator** – Books already purchased display a “Download” button instead of “Add to Cart” in the store, preventing duplicate purchases.
+
+<img src="documentation/screenshots/download-button.png" alt="Download" style="width:50%;">
+
+### **Author Profiles**
+- **Author Page** – Displays a list of all author's profiles.
+
+<img src="documentation/screenshots/authors-list.png" alt="Authors" style="width:50%;">   
+
+### **Admin Features**
+- **Manage Books** – Admins can add, edit, and delete books from the catalog. 
+
+<img src="documentation/screenshots/manage-books.png" alt="Manage Books" style="width:50%;">
+
+- **Manage Authors** – Admins can add, edit, and delete authors. 
+
+<img src="documentation/screenshots/manage-authors.png" alt="Manage Authors" style="width:50%;">
+
+- **Update Homepage Content** – Admins can update the literal quote and about section on the homepage through the Django admin panel.
+
 ## Database Schema 
 
 ### Entity Relationship Diagram
@@ -298,6 +380,9 @@ For a detailed view of the full development process, including sprints, issues, 
 ## Marketing
 
 Marketing for *Chapter One* focuses on building a strong online presence and keeping users engaged through social media and email marketing. The goal is to attract readers and encourage them to return to the site, explore books, and support new authors.
+
+<img src="documentation/images/facebook-1.png" alt="facebook-top" style="width:70%;">
+<img src="documentation/images/facebook-2.png" alt="facebook" style="width:70%;">
 
 ### Facebook Business Page  
 A [Facebook Business Page](https://www.facebook.com/people/Chapter-One/61571407364696/) was created for *Chapter One* to connect with readers and promote new books and authors.  
@@ -579,6 +664,7 @@ The *Chapter One* project was built using a combination of languages, frameworks
 - **dbdiagram.io** – For designing and visualizing the Entity Relationship Diagram (ERD).  
 - **RedKetchup Favicon Generator** – For generating the site’s favicon.  
 - **Mailchimp** – For email marketing and newsletter subscriptions.
+- **ChatGpt** - For book content generation.
 - **Heroku** – Platform for hosting the live application. 
 - **AWS S3** – Cloud storage for serving static and media files. 
 - **PostgreSQL** – Cloud-hosted relational database provided by Code Institute. 
