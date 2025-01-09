@@ -7,6 +7,28 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """
+    Model representing a customer's order.
+
+    Fields:
+        - order_number (CharField): A unique order number.
+        - user_profile (ForeignKey): Links the order to the user's profile.
+        - full_name (CharField): Full name of the customer.
+        - email (EmailField): Customer's email address.
+        - phone_number (CharField): Customer's contact number.
+        - country (CountryField): Customer's country.
+        - postcode (CharField): Customer's postal code. Optional.
+        - town_or_city (CharField): Customer's town or city.
+        - street_address1 (CharField): Customer's primary address.
+        - street_address2 (CharField): Customer's secondary address. Optional.
+        - county (CharField): Customer's county. Optional.
+        - date (DateTimeField): Timestamp of when the order was created.
+        - order_total (DecimalField): Total price of the order. Default is 0.
+        - original_cart (TextField): JSON representation of the cart
+        contents at checkout.
+        - stripe_pid (CharField): Stripe Payment Intent ID for tracking
+        the transaction.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
 
     # Customer Information
@@ -64,6 +86,14 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """
+    Model representing an individual book in a customer's order.
+
+    Fields:
+        - order (ForeignKey): Links the line item to its parent order.
+        - book (ForeignKey): The purchased book.
+        - price (DecimalField): Price of the book at the time of purchase.
+    """
     order = models.ForeignKey(
         'Order',
         null=False,

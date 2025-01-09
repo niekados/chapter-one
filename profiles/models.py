@@ -6,7 +6,21 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    """ User Profile model """
+    """
+    Represents a user profile containing default delivery information.
+
+    Fields:
+        - user (OneToOneField): Links the profile to a Django User model.
+        - default_phone_number (CharField): User's phone number. Optional.
+        - default_street_address1 (CharField): User's primary street address.
+        Optional.
+        - default_street_address2 (CharField): User's secondary street address.
+        Optional.
+        - default_town_or_city (CharField): User's town or city. Optional.
+        - default_county (CharField): User's county. Optional.
+        - default_postcode (CharField): User's postal code. Optional.
+        - default_country (CountryField): User's country. Optional.
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(
         max_length=20, null=True, blank=True
