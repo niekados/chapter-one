@@ -74,6 +74,55 @@ The JavaScript files were validated using the [Esprima JavaScript Validator](htt
 
 ### PEP8 Validation
 
+All Python files were validated using the [Code Institute PEP8 Validation Tool](https://pep8ci.herokuapp.com/). The results are summarized below:
+
+| File Name                      | Errors          |
+|--------------------------------|-----------------|
+| **Authors App**                |                 |
+| admin.py                       | None            |
+| forms.py                       | None            |
+| models.py                      | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+| **Books App**                  |                 |
+| admin.py                       | None            |
+| forms.py                       | None            |
+| models.py                      | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+| **Cart App**                   |                 |
+| context.py                     | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+| **Chapter One Project**        |                 |
+| urls.py                        | None            |
+| views.py                       | None            |
+| **Checkout App**               |                 |
+| admin.py                       | None            |
+| forms.py                       | None            |
+| models.py                      | None            |
+| signals.py                     | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+| webhook_handler.py             | None            |
+| webhooks.py                    | None            |
+| **Home App**                   |                 |
+| admin.py                       | None            |
+| forms.py                       | None            |
+| models.py                      | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+| **Library App**                |                 |
+| admin.py                       | None            |
+| models.py                      | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+| **Profiles App**               |                 |
+| forms.py                       | None            |
+| models.py                      | None            |
+| urls.py                        | None            |
+| views.py                       | None            |
+
 ### Lighthouse Testing
 
 ## Testing User Stories
@@ -167,6 +216,8 @@ The JavaScript files were validated using the [Esprima JavaScript Validator](htt
 <img src="documentation/screenshots/confirm-delete-author.png" alt="Delete Author" style="width:50%;">
 
 ## Manual Testing
+
+
 
 ## Bugs
 

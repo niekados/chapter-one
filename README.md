@@ -1,10 +1,10 @@
 # Chapter One
 
-<img src="" alt="Am I Responsive" style="width:90%;">
+<img src="documentation/screenshots/am-i-responsive.png" alt="Am I Responsive" style="width:90%;">
 
 "Chapter One" is an online bookstore designed to support emerging authors by providing them with a platform to share their work. Focused on selling affordable, digital PDF books, Chapter One aims to connect readers with fresh voices in literature, offering them a unique way to support new authors at the start of their writing journey. With a minimalist design, integrated Stripe payments, and Mailchimp newsletters, Chapter One fosters an accessible environment for both authors and readers passionate about discovering new stories.
 
-**[Link to the deployed application](https://chapter-one-6f5e3972cc2a.herokuapp.com/books/)**
+**[Link to the deployed application](https://chapter-one-6f5e3972cc2a.herokuapp.com)**
 
 ## Index
 
