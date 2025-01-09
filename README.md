@@ -344,6 +344,15 @@ To enhance readability, colour contrasts meet accessibility standards:
 
 - **Update Homepage Content** – Admins can update the literal quote and about section on the homepage through the Django admin panel.
 
+## Future Features
+
+- **Author Profile Pages** – Dedicated pages for each author, showcasing their biography, photo, background and a list of their books. 
+- **Wishlist** – Allow users to save books they are interested in for later purchase.  
+- **Ratings and Reviews** – Enable users to leave ratings and reviews for books they’ve read to help others make informed decisions.  
+- **Book Recommendations** – Suggest books to users based on their purchase history and interests.  
+- **Featured Books Section** – Highlight selected books on the homepage to promote new releases or top-rated titles.  
+- **Discount Codes** – Add functionality for promotional discount codes during checkout.  
+
 ## Database Schema 
 
 ### Entity Relationship Diagram
