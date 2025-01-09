@@ -559,6 +559,42 @@ Stripe provides test card numbers to simulate different payment scenarios:
 - Expiry date - any future date
 - CVC - any 3 numbers
 
+## Technologies Used
+
+The *Chapter One* project was built using a combination of languages, frameworks, tools, and libraries to deliver a full-stack e-commerce web application.
+
+### Languages
+- **HTML** – For structuring the content of the site.  
+- **CSS** – For styling and layout design.  
+- **JavaScript** – For interactivity and dynamic features.  
+- **Python** – For backend logic and server-side scripting.  
+
+### Frameworks and Tools
+- **Django** – Python framework for building the backend and database models.  
+- **Git** – Version control system for tracking changes.  
+- **GitHub** – Repository hosting for storing code and enabling deployment.  
+- **GitPod** – Online IDE used for development.  
+- **Bootstrap** – Frontend framework for responsive design and layout.  
+- **Balsamiq** – For creating wireframes during the planning phase.  
+- **dbdiagram.io** – For designing and visualizing the Entity Relationship Diagram (ERD).  
+- **RedKetchup Favicon Generator** – For generating the site’s favicon.  
+- **Mailchimp** – For email marketing and newsletter subscriptions.
+- **Heroku** – Platform for hosting the live application. 
+- **AWS S3** – Cloud storage for serving static and media files. 
+- **PostgreSQL** – Cloud-hosted relational database provided by Code Institute. 
+
+### Libraries 
+- boto3 – AWS SDK for Python to manage S3 storage integration.
+- dj-database-url – Enables connection to PostgreSQL database.   
+- django-allauth – Handles user authentication and account management.  
+- django-countries – Provides country field support in Django forms and models.  
+- django-crispy-forms – Simplifies form rendering and customization.  
+- django-richtextfield – Adds support for rich text fields in models and forms.  
+- django-storages – Simplifies integration with AWS S3 for static and media file storage.  
+- gunicorn – WSGI HTTP server used for running Django applications in production.   
+- pillow – Handles image processing and manipulation in Django models.  
+- psycopg2 – PostgreSQL database adapter for Python and Django.  
+
 ## Credits
 
 ### **Images**
