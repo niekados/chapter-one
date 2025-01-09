@@ -18,6 +18,7 @@ Home
 
   <!-- Literary quote -->
   <section class="quote my-4 p-4">
+    <h2 class="d-none">Quote</h2>
     <p>“{{ content.quote }}”</p>
     <p><small>— {{ content.quote_author }}</small></p>
   </section>
@@ -28,7 +29,7 @@ Home
       <div class="row justify-content-center">
         <h2>About Us</h2>
         <div class="col-12 col-md-8 col-lg-7 text-start">
-          <p>{{ content.about|safe }}</p>
+          <span>{{ content.about|safe }}</span>
         </div>
       </div>
     </div>
