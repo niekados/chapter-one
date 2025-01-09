@@ -26,28 +26,28 @@ The HTML code for the Journey app was validated using the [W3C Markup Validation
 #### Warnings:
 - The `type` attribute is unnecessary for JavaScript resources. This warning appeared multiple times in the code but was left unchanged as it is not critical and does not impact functionality.
 
-| Page                 | Warnings                          | Errors                         |
-|----------------------|-----------------------------------|--------------------------------|
-| index                | JS type attribute                 | None                           |
-| add author           | JS type attribute                 | None                           |
-| authors list         | JS type attribute                 | None                           |
-| confirm author delete | JS type attribute                 | None                           |
-| edit author          | JS type attribute                 | None                           |
-| manage authors       | JS type attribute                 | None                           |
-| add book             | JS type attribute                 | None                           |
-| book detail          | JS type attribute                 | None                           |
-| books list           | JS type attribute                 | None                           |
-| confirm book delete  | JS type attribute                 | None                           |
-| edit book            | JS type attribute                 | None                           |
-| manage books         | JS type attribute                 | None                           |
-| shopping cart        | JS type attribute                 | None                           |
-| checkout             | JS type att, empty heading        | None                           |
-| checkout success     | JS type attribute                 | None                           |
-| my library           | JS type attribute                 | None                           |
-| profile              | JS type attribute                 | None                           |
-| sign in              | JS type attribute                 | None                           |
-| sign out             | JS type attribute                 | None                           |
-| sign up              | JS type attribute                 | None                           |
+| Page                 | Warnings                          | Errors    |
+|----------------------|-----------------------------------|-----------|
+| index                | JS type attribute                 | None      |
+| add author           | JS type attribute                 | None      |
+| authors list         | JS type attribute                 | None      |
+| confirm author delete | JS type attribute                 | None      |
+| edit author          | JS type attribute                 | None      |
+| manage authors       | JS type attribute                 | None      |
+| add book             | JS type attribute                 | None      |
+| book detail          | JS type attribute                 | None      |
+| books list           | JS type attribute                 | None      |
+| confirm book delete  | JS type attribute                 | None      |
+| edit book            | JS type attribute                 | None      |
+| manage books         | JS type attribute                 | None      |
+| shopping cart        | JS type attribute                 | None      |
+| checkout             | JS type att, empty heading        | None      |
+| checkout success     | JS type attribute                 | None      |
+| my library           | JS type attribute                 | None      |
+| profile              | JS type attribute                 | None      |
+| sign in              | JS type attribute                 | None      |
+| sign out             | JS type attribute                 | None      |
+| sign up              | JS type attribute                 | None      |
 
 ### CSS Validation
 
@@ -55,11 +55,11 @@ The CSS files were validated using the [W3C CSS Validator](https://jigsaw.w3.org
 
 #### Validation Results
 
-| CSS File       | Warnings                        | Errors                          |
-|----------------|---------------------------------|---------------------------------|
-| base.css       | None                            | None                            |
-| checkout.css   | None                            | None                            |
-| profiles.css   | None                            | None                            |
+| CSS File       | Warnings  | Errors |
+|----------------|-----------|--------|
+| base.css       | None      | None   |
+| checkout.css   | None      | None   |
+| profiles.css   | None      | None   |
 
 ### JavaScript Validation
 
@@ -67,10 +67,10 @@ The JavaScript files were validated using the [Esprima JavaScript Validator](htt
 
 #### Validation Results
 
-| JavaScript File          | Warnings                         | Errors                          |
-|--------------------------|----------------------------------|---------------------------------|
-| elements.js              | None                             | None                            |
-| base.html script section | None                             | None                            |
+| JavaScript File          | Warnings    | Errors     |
+|--------------------------|-------------|------------|
+| elements.js              | None        | None       |
+| base.html script section | None        | None       |
 
 ### PEP8 Validation
 
@@ -124,6 +124,51 @@ All Python files were validated using the [Code Institute PEP8 Validation Tool](
 | views.py                       | None            |
 
 ### Lighthouse Testing
+
+The Lighthouse tool by Google was used to evaluate website performance, accessibility, best practices, and SEO. The tests were conducted for both desktop and mobile views of all key pages in the *Chapter One* project to ensure an optimised user experience across different devices.
+
+| Page                     | Device    | Performance | Accessibility  | Best Practices | SEO  |
+|--------------------------|-----------|-------------|----------------|----------------|------|
+| Home Page                | Desktop   | 88          | 89             | 100            | 100  |
+|                          | Mobile    | 76          | 88             | 100            | 100  |
+| Add Author               | Desktop   | 87          | 95             | 81             | 100  |
+|                          | Mobile    | 60          | 95             | 82             | 100  |
+| Authors List             | Desktop   | 92          | 95             | 100            | 100  |
+|                          | Mobile    | 61          | 94             | 100            | 100  |
+| Confirm Author Delete    | Desktop   | 91          | 92             | 100            | 100  |
+|                          | Mobile    | 76          | 92             | 100            | 100  |
+| Edit Author              | Desktop   | 89          | 95             | 81             | 100  |
+|                          | Mobile    | 63          | 95             | 82             | 100  |
+| Manage Authors           | Desktop   | 91          | 96             | 100            | 100  |
+|                          | Mobile    | 76          | 96             | 100            | 100  |
+| Add Book                 | Desktop   | 89          | 95             | 100            | 100  |
+|                          | Mobile    | 74          | 94             | 100            | 100  |
+| Book Detail              | Desktop   | 95          | 95             | 100            | 100  |
+|                          | Mobile    | 78          | 94             | 100            | 100  |
+| Books List               | Desktop   | 82          | 91             | 100            | 100  |
+|                          | Mobile    | 72          | 91             | 100            | 100  |
+| Confirm Book Delete      | Desktop   | 94          | 92             | 100            | 100  |
+|                          | Mobile    | 80          | 92             | 100            | 100  |
+| Edit Book                | Desktop   | 80          | 95             | 100            | 100  |
+|                          | Mobile    | 66          | 94             | 100            | 100  |
+| Manage Books             | Desktop   | 75          | 96             | 100            | 100  |
+|                          | Mobile    | 72          | 96             | 100            | 100  |
+| Shopping Cart            | Desktop   | 90          | 96             | 100            | 100  |
+|                          | Mobile    | 76          | 96             | 100            | 100  |
+| Checkout                 | Desktop   | 82          | 88             | 100            | 100  |
+|                          | Mobile    | 73          | 87             | 100            | 100  |
+| Checkout Success         | Desktop   | 80          | 95             | 100            | 100  |
+|                          | Mobile    | 67          | 94             | 100            | 100  |
+| My Library               | Desktop   | 92          | 95             | 100            | 100  |
+|                          | Mobile    | 76          | 95             | 100            | 100  |
+| Profile                  | Desktop   | 85          | 91             | 100            | 100  |
+|                          | Mobile    | 72          | 91             | 100            | 100  |
+| Sign In                  | Desktop   | 93          | 96             | 100            | 100  |
+|                          | Mobile    | 76          | 96             | 100            | 100  |
+| Sign Out                 | Desktop   | 92          | 96             | 100            | 100  |
+|                          | Mobile    | 78          | 96             | 100            | 100  |
+| Sign Up                  | Desktop   | 94          | 96             | 100            | 100  |
+|                          | Mobile    | 78          | 96             | 100            | 100  |
 
 ## Testing User Stories
 
